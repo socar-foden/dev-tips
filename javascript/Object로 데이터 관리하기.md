@@ -1,5 +1,5 @@
 ✅ 다수의 데이터 관리 Array vs Object
-> * 자바스크립트에서 다수의 데이터를 다룰 때 일반적으로 Array를 사용하나 <b>Object</b>로도 가능하다.
+* 자바스크립트에서 다수의 데이터를 다룰 때 일반적으로 Array를 사용하나 <b>Object</b>로도 가능하다.
 ```javascript
 const Man = function (id, name) {
     this.id = id;

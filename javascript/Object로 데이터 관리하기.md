@@ -24,7 +24,7 @@ let list = [
     new Man('53a-1a3123s', 'Camila'),
     new Man('sd1-sf3431s', 'Pogba')
 ];
-// 아래와 같이
+// 아래와 같이 key: Object 형식으로 관리할 수 있다.
 let listObj = {
     'adf-asd2312': new Man('adf-asd2312', 'Jack'),
     '53a-1a3123s': new Man('53a-1a3123s', 'Camila'),

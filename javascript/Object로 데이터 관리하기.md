@@ -20,25 +20,25 @@ const Man = function (id, name) {
 
 // 아래가 일반적인 Array로 관리하는 방식이라면
 let list = [
-    new Man('adf-asd2312', 'Jack'),
-    new Man('53a-1a3123s', 'Camila'),
-    new Man('sd1-sf3431s', 'Pogba')
+    new Man("adf-asd2312", "Jack"),
+    new Man("53a-1a3123s", "Camila"),
+    new Man("sd1-sf3431s", "Pogba")
 ];
 // 아래와 같이 key: Object 형식으로 관리할 수 있다.
 let listObj = {
-    'adf-asd2312': new Man('adf-asd2312', 'Jack'),
-    '53a-1a3123s': new Man('53a-1a3123s', 'Camila'),
-    'sd1-sf3431s': new Man('sd1-sf3431s', 'Pogba')
+    "adf-asd2312": new Man("adf-asd2312", "Jack"),
+    "53a-1a3123s": new Man("53a-1a3123s", "Camila"),
+    "sd1-sf3431s": new Man("sd1-sf3431s", "Pogba")
 };
 
 /** 추가, 삭제할 경우 아래와 같이 접근하면 되고 */
-listObj['sd1-sf3431s']
+listObj["sd1-sf3431s"]
 /** 삭제할 경우 delete를 사용한다. */
-delete listObj['sd1-sf3431s'];
+delete listObj["sd1-sf3431s"];
 ```
 * cf) 배열에서는 index로 delete 메서드로 객체를 지울시, 그냥 해당 자리가 공석(empty)이 되어버린다.
 * <b>Object.values()</b>를 사용해 배열 형태로 모든 객체를 돌 수 있다.
 ```javascript
 Object.values(listObj);
-// [Man {id: 'adf-asd2312', name: 'Jack'}, Man {id: '53a-1a3123s', name: 'Camila'}, Man {id: 'sd1-sf3431s', name: 'Pogba'}]
+// [Man {id: "adf-asd2312", name: "Jack"}, Man {id: "53a-1a3123s", name: "Camila"}, Man {id: "sd1-sf3431s", name: "Pogba"}]
 ```

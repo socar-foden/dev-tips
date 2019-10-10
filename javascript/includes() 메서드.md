@@ -5,6 +5,6 @@
 ```javascript
 const array = [1, 2, 3, 4, 5];
 array.includes(1); // true
-array.includes('1'); // false
+array.includes("1"); // false
 array.includes(0); // false
 ```

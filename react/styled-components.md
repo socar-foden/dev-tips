@@ -15,3 +15,18 @@ const ImageContainer = styled.div`
   }
 `;
 ```
+
+* props 스타일에 넘기기
+```jsx harmony
+const S_Div = styled.div`
+  ...
+  background-image: url(${props => props.bgImage});
+  ...
+`;
+
+...
+
+<S_Div
+    bgImage={'https://imageUrl.com'}
+/>
+```

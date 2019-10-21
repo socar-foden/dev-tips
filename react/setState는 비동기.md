@@ -4,16 +4,9 @@
 * -------> 기본적으로 setState는 비동기로 처리되기 때문에 아래와 같이 사용해야 한다.
 ```javascript
 this.setState((prevState, props) => {
-    // change state
-});
-
-// 위 setState가 끝난 후, 동기적으로 실행된다.
-...
-```
-> 혹은 아래와 같이 사용할 수도 있다.
-```javascript
-this.setState({
-    // changeState
+    return {
+        // changeState
+    };
 }, () => {
     ...
     // callback 함수

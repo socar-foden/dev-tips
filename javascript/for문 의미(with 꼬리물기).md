@@ -22,9 +22,9 @@ for (let i = 0; i < dots.length; i++) {
     const root = [];
     for (let to = dots[i]; to !== start; to = preds[to]) {
         /** 시작지점('A')을 만날때까지 이전지점을 찾아나간다. **/
-        path.push(to);
+        root.push(to);
     }
-    path.push(start);
-    console.log(path.reverse().join(' -> '));
+    root.push(start);
+    console.log(root.reverse().join(' -> '));
 }
 ```

@@ -25,6 +25,6 @@ for (let i = 0; i < dots.length; i++) {
         root.push(to);
     }
     root.push(start);
-    console.log(root.reverse().join(' -> '));
+    return root.reverse().join(' -> ');
 }
 ```

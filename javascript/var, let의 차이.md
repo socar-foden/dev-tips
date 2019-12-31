@@ -27,7 +27,7 @@ function letTest2(array) {
     return results;
 }
 
-varTest([10, 20, 30, 40, 50])[0](); // undefined
+varTest([10, 20, 30, 40, 50])[0](); // undefined -> i = 5
 letTest1([10, 20, 30, 40, 50])[0](); // 10
-letTest2([10, 20, 30, 40, 50])[0](); // undefined
+letTest2([10, 20, 30, 40, 50])[0](); // undefined -> i = 5
 ```

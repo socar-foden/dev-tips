@@ -27,7 +27,19 @@ function letTest2(array) {
     return results;
 }
 
+function useCloser(array) {
+    var results = [];
+    let i;
+    for (i = 0; i < 5; i++) {
+        (function(j) {
+          results[j] = function() {return array[j];}
+        })(i);
+    }
+    return results;
+}
+
 varTest([10, 20, 30, 40, 50])[0](); // undefined -> i = 5
 letTest1([10, 20, 30, 40, 50])[0](); // 10
 letTest2([10, 20, 30, 40, 50])[0](); // undefined -> i = 5
+useCloser([10, 20, 30, 40, 50])[0](); // 10
 ```

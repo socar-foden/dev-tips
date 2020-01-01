@@ -21,6 +21,13 @@ function eval_func2() {
     return evalFunc('a');
 }
 eval_func2(); // 11: 전역 스코프에서 eval을 평가한다.
+
+function eval_func3() {
+    let b = 'bb';
+    let evalFunc = eval;
+    return evalFunc('b');
+}
+eval_func3(); // ReferenceError
 ```
 
 * 아래와 같이 매개변수로 실행 문자열을 받고 직접적으로 호출할 경우, 극히 위험하다

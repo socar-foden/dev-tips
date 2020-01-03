@@ -20,36 +20,24 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const filter = function* (pred, iter) {
     for (let item of iter) {
-        // console.log(item)
-        if (pred(item)) yield item;
+        if (pred(item)) {console.log(item); yield item};
     }
 }
 
 const map = function* (f, iter) {
     for (let item of iter) {
-        // console.log('map: ', item)
+        console.log('map: ', item)
         yield f(item);
     }
 }
-
-const result = _.take(5,
-    filter(item => item % 2 == 0,
-        map(n => n + 10, arr)
-    ));
-
-// console.log(result)
 
 
 const re = filter(item => item % 2 == 0,
     map(n => n + 10, arr)
 );
 
-console.log(re.next())
-console.log(re.next())
-console.log(re.next())
-console.log(re.next())
-console.log(re.next())
-
+const result = _.take(2, re);
+console.log(result)
 ```
 ????????????? 아래 참고
 https://armadillo-dev.github.io/javascript/whit-is-lazy-evaluation/

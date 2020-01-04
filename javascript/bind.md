@@ -24,3 +24,16 @@ const buffer = {
 ```javascript
 buffer.add === buffer.add.bind(buffer); // false
 ```
+<hr />
+
+* 가변인자를 매개변수로 받기 때문에 <b>커링</b>에 활용 될 수 있다.
+```javascript
+const makeStr = function (a, b, c) {
+    return '[' + a + ':' + b + ':' + c + ']';
+}
+
+const insertOnlyC = makeStr.bind(null, '--', '__');
+insertOnlyC('XXXXX'); // [--:__:XXXXX]
+insertOnlyC('SS'); // [--:__:SS]
+insertOnlyC('EW'); // [--:__:EW]
+```

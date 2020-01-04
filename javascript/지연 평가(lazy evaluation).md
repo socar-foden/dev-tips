@@ -46,7 +46,9 @@ const take = function* (num, iter) {
 }
 
 const array = [1, 2, 3, 4, 5, 6];
-const result = take(3, filter(n => n % 2 === 0, map(n => n + 1, array)));
+const result = take(3, 
+    filter(n => n % 2 === 0, 
+        map(n => n + 1, array)));
 
 // console.log(Array.from(result)); // [2, 4, 6]
 ```

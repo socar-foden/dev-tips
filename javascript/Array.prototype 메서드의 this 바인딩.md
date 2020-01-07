@@ -11,12 +11,31 @@ const a = {
     },
     func2: function() {
         [1].forEach(function () {
-            console.log(this.name); // 여기서 this는 전역객체
+            console.log(this.name);
         }, this);
+    },
+    func3: function() {
+        [1].forEach(function () {
+            console.log(this.name);
+        }.bind(this));
+    },
+    func4: function() {
+        const self = this;
+        [1].forEach(function () {
+            console.log(self.name);
+        });
+    },
+    func5: function() {
+        [1].forEach(() => {
+            console.log(this.name);
+        });
     }
 }
 a.func1(); // undefined
 a.func2(); // jack
+a.func3(); // jack
+a.func4(); // jack
+a.func5(); // jack
 ```
 * <b>** 콜백함수는 기본적으로 전역객체에 바인딩된다.</b> 
 * (<b>화살표 함수는 자신을 호출한 객체가 this</b>)

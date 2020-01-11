@@ -11,6 +11,8 @@ const SmallAnimal = function (name) {
 }
 // 하지만 아직 SmallAnimal의 prototype 객체는 Animal이 아니다.
 SmallAnimal.prototype = Object.create(Animal.prototype);
-// 여기서 변경된 SmallAnimal.prototype의 constructor는 지정되지 않아, 지정해주어야 한다.
+// 변경된 SmallAnimal.prototype의 constructor는 지정되지 않아, 지정해주어야 한다.
 SmallAnimal.prototype.constructor = SmallAnimal;
+
+console.log()
 ```

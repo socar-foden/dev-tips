@@ -1,4 +1,4 @@
-✅ for... in... 사용시 주의점
+✅ in... 연산자 사용시 주의점
 * 해당 객체의 prototype의 프로퍼티까지 모두 순회하므로 주의한다.
 ```javascript
 const ArrayObj = function () {  }

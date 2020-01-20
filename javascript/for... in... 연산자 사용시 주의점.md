@@ -1,4 +1,4 @@
-✅ in... 연산자 사용시 주의점
+✅ for... in... 연산자 사용시 주의점
 * 해당 객체의 prototype의 프로퍼티까지 모두 순회하므로 주의한다.
 ```javascript
 const ArrayObj = function () {  }
@@ -30,4 +30,12 @@ for (let i in a) { console.log(i); }
 // aa
 // bb
 // cc
+```
+* 추가로, 키를 순회할때는 문자열로 인식한다.
+```javascript
+const arr = [100, 222, 333];
+let sum = 0;
+
+for (let key in arr) { sum += key; }
+key; // 0012('0' + '0' + '1' + '2')
 ```

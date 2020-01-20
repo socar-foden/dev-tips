@@ -1,6 +1,6 @@
 ✅ Object.defineProperty
 * 객체의 프로퍼티를 추가할 때, 여러가지 속성을 부여해 추가할 수 있게 해준다.
-* in... 연산자 사용시 .prototype 객체에 공통적인 함수를 추가하고 싶을때 용이하다.
+* for... in... 연산자 사용시 .prototype 객체에 공통적인 함수를 추가하고 싶을때 용이하다.
 ```javascript
 let Cons = function (name, age) {
     this.name = name;

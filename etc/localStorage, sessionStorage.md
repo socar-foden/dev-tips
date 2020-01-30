@@ -12,3 +12,9 @@
 * sessionStorage
     * <b>세션과 같은 생명주기</b>(브라우저에 종속)
     * 따라서.. 일시적인 로그인 유지
+
+<hr />
+
+* 추가로, 쿠키와 아래와 같은 중요한 차이점도 존재한다.
+> * localStorage, sessionStorage: <b>https, http 동기화 X</b>
+> * 쿠키: https, http 동기화 O

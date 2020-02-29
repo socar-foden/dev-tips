@@ -26,4 +26,21 @@ const Com = () => {
         <div>hello</div>
     );
 }
-``` 
+```
+
+* componentWillUpdate 대체하기
+```jsx
+const value = 0;
+useEffect(() => {
+    ...
+}, [value]); // -> 재호출 기준이 될 변수를 배열 안에 넣어준다.
+```
+* componentWillUnmount 대체하기
+```jsx
+const value = 0;
+useEffect(() => {
+    ...
+    return () => {
+        ...
+    }; // 필요한 내용이 담긴 callback 함수를 return 해준다.
+});

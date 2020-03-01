@@ -44,3 +44,6 @@ useEffect(() => {
         ...
     }; // 필요한 내용이 담긴 callback 함수를 return 해준다.
 });
+
+<hr />
+* 필요하다면, 여러개의 useEffect()를 사용하는 것도 가능하다.

@@ -1,6 +1,6 @@
 ✅ 이벤트 전파방식
 
-![bubbling&&capturing](../resources/bubbling&&capturing.png)
+![bubbling&&capturing](/resources/bubbling&&capturing.png)
 * 이벤트 Bubbling
 > 자식 -> 부모
 * 이벤트 Capturing

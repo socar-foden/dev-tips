@@ -3,7 +3,7 @@
 * 코드가 런타임중에 동적으로 바뀌는 경우 사용한다.
 * 직접적인 eval 호출은 무조건적으로 피해야 한다.
 
-![eval](../resources/eval.png)
+![eval](/resources/eval.png)
 (참고 MDN: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/eval)
 
 ```javascript

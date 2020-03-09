@@ -14,12 +14,12 @@ array
 * 위 경우, 과정을 거칠때 마다, 모든 요소에 대한 검사를 한 후, 다음 과정을 거치게 된다.
 * 가령, 10,000개의 데이터중 3개를 뽑아야 할 경우, 쓸데없는 연산을 많이 하게 된다.
 
-![strict](../resources/strict.png)
+![strict](/resources/strict.png)
 
 * 지연 평가의 경우 아래와 같은 과정을 거친다.
 * 각 요소에 대해 모든 과정을 거친 후, 하나씩 결과에 대입한다.
 
-![lazy](../resources/lazy.png)
+![lazy](/resources/lazy.png)
 
 * 모든 데이터를 이터러블 객체로 받는다는 가정을 하면, 아래와 같이 구현이 가능하다.
 ```javascript

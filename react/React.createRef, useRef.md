@@ -40,4 +40,4 @@ function App() {
 ```
 > refObj.current값이 계속 증가하지만, 화면이 렌더링되지 않는다.
 
-![useRef](../resources/useRef.png)
+![useRef](/resources/useRef.png)

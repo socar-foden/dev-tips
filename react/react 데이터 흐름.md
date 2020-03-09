@@ -23,5 +23,5 @@ const Child = ({func}) => {
     );
 }
 ```
-![react-reverse](../resources/react-reverse.png)
+![react-reverse](/resources/react-reverse.png)
 

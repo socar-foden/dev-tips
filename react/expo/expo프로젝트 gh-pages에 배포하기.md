@@ -10,7 +10,7 @@ $ expo build:web
 
 아래와 같이 web-build에 빌드가 된다.
 
-![web-build](../../resources/web-build.png)
+![web-build](/resources/web-build.png)
 
 package.json에 아래와 같은 양식으로 "hompage"를 추가해주고,
 ````

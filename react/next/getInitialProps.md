@@ -11,3 +11,5 @@
 
 <hr />
 --> next 9.3이상 버전부터 역할별로 3개의 메서드로 구분됨
+
+참고: https://github.com/zxczoxc125/dev-tips/blob/master/javascript/ES5%20%EC%83%81%EC%86%8D.md

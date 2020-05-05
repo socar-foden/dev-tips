@@ -9,7 +9,7 @@
 <hr />
 
 * Java와 비교해보면 알기 쉽다.
-
+* `Java`
   ```java
   public class Main {
       public static void main(String[] args) throws Exception {
@@ -42,6 +42,7 @@
   }
   ```
 
+* `javascript`
   ```javascript
   class Duck {
     quack() {
@@ -63,7 +64,7 @@
   quackWrapper(new Person())
   ```
 
-* `Typescript`에서 타입 체크를 할 때, 특정 인터페이스를 구현하지 않아도 같은 멤버를 가지고 있을 경우 해당 인터페이스를 구현했다고 판단, 따 덕 타이핑의 단점인 `안정성`을 보완할 수 있다.
+* `Typescript`의 경우, 타입 체크를 할 때 특정 인터페이스를 구현하지 않아도 같은 멤버를 가지고 있을 경우 해당 인터페이스를 구현했다고 판단, 따 덕 타이핑의 단점인 `안정성`을 보완할 수 있다.
 * (물론 Person이 Quackable을 구현하는 것이 더 좋아 보이지만)
 
   ```typescript

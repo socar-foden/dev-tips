@@ -1,5 +1,6 @@
 ✅ 함수선언문 사용을 지양하자 with 호이스팅
 * 함수선언문에 대한 블록 스코프(지역)에 대한 정확한 명세가 존재하지 않는다.
+* (환경마다 다르다.)
   ```javascript
   const f = function () { return 'global'; }
   function test(x) {

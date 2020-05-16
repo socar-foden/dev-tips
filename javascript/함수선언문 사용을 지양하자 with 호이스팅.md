@@ -40,3 +40,19 @@
   test(true); // ['local', 'global']
   test(false); // [ 'global' ]
   ```
+* `변수`와 비교해서, `함수선언문`이 더 `먼저` 끌어올려진다.
+  ```javascript
+  console.log(test1); // [Function: test]
+  function test1() {}
+
+  console.log(test2); // undefined
+  var test2 = function () {}
+
+  testFunc(); // 'test Func': 함수선언문이 먼저 끌어올려졌으므로
+
+  var testFunc;
+  function testFunc() { console.log('test Func'); }
+  testFunc = function () { console.log('--var-- test Func'); }
+
+  testFunc(); // '--var-- test Func'
+  ```

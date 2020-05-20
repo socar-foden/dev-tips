@@ -1,12 +1,12 @@
 ✅ ES5 상속
-* 인스턴스 객체, prototype 객체의 상속을 각각 지정해주어야 한다.
+* 자식의 `.prototype` 객체를 부모의 `.prototype`를 `[[Prototype]]`으로 하는 객체로 바꿔준다.
 * (각 인스턴스가 가져야 할 부분인지, 공유해야 할 영역인지 잘 생각해보면 된다.)  
 ```javascript
 const Animal = function (name) { this.name = name; }
 Animal.prototype.animalFunc = function () { console.log('animalFunc'); }
 
 const SmallAnimal = function (name) { 
-    Animal.call(this, name); // 부모 생성자 함수를 호출해 준다.
+    Animal.call(this, name); // 부모 생성자 함수를 호출해 준다. (단순히 함수 자체의 역할을 수행한다. 생성자 개념 X)
     this.size = 10;
 }
 // 하지만 아직 SmallAnimal의 prototype 객체는 Animal이 아니다.

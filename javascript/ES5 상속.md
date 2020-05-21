@@ -29,4 +29,5 @@ console.log(SmallAnimal.prototype); // {smallAnimalFunc: , constructor: }
 cat.animalFunc(); // animalFunc 함수를 사용가능하다.
 cat.smallAnimalFunc(); 
 ```
-* SmallAnimal의 prototype을 지정해주는 부분 중요. (<b>Object.create</b>)
+* SmallAnimal의 prototype을 지정해주는 부분 중요. (<b>`Object.create`</b>)
+* (Object.create가 '[[Prototype]]가 상위 .prototype에 링크시킨 새로운 객체'를 만들어준다. `연결고리 객체`를 만들어 주는것)

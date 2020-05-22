@@ -44,4 +44,5 @@
   console.log(Object.getPrototypeOf(c1) === Parent); // flase
   console.log(Object.getPrototypeOf(c1) === Child); // true: 가장 가까운 상위 [[Prototype]]
   ```
+* `c -> Child -> Parent` 모두 `[[Prototype]]`링크로만 단순하게 연결되어 있다. (잡다한 부가적인 것들이 없다.)
 * 개인적으로 일반적인 상속 패턴보다, 이게 훨씬 나은 것 같다.

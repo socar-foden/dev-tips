@@ -29,4 +29,19 @@
   console.log(c2.getName()); // c2: [[Prototype]] 연쇄로 최종적으로 Parent의 getName을 호출한다.
   console.log(c2.getDetailInfo()); // c2/15
   ```
+* 인스턴스를 확인하기 위해서 `instanceof`가 아니라 `Object.isPrototypeOf`, `Object.getPrototypeOf`를 사용한다.
+  ```javascript
+  // 위 스크립트에 이어서
+
+  /** Parent, Child 비교 */
+  console.log(Parent.isPrototypeOf(Child)); // true
+  console.log(Object.getPrototypeOf(Child) === Parent); // true
+
+  /** c1 */
+  console.log(Parent.isPrototypeOf(c1)); // true
+  console.log(Child.isPrototypeOf(c1)); // true
+
+  console.log(Object.getPrototypeOf(c1) === Parent); // flase
+  console.log(Object.getPrototypeOf(c1) === Child); // true: 가장 가까운 상위 [[Prototype]]
+  ```
 * 개인적으로 일반적인 상속 패턴보다, 이게 훨씬 나은 것 같다.

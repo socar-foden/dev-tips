@@ -21,3 +21,31 @@
   * 귀결된 후에는 `상태가 그대로 유지`(`불변성`)되며, 몇번이고 `재사용 가능`하다.
   * (Promise의 불변성도 중요하다. 기억해두자.)
   * `덕 타이핑`으로 구현되어 있다. `then`이라는 함수만 구현되어 있으면 Promise 객체로 인식하기 때문에 주의
+
+* Promise 스케쥴링
+  ```javascript
+  function test() {
+    return new Promise((resolve, reject) => {
+      resolve();
+    });
+  }
+
+  const t = test();
+
+  t.then(() => {
+    t.then(() => {
+      console.log('C');
+    });
+
+    console.log('A');
+  });
+
+  t.then(() => {
+    console.log('B');
+  });
+
+  // A
+  // B
+  // C
+  // 위 순서가 보장된다. 콜백함수로 위 로직을 구현했을 경우, 순서를 보장받을 수 없다.
+  ```

@@ -21,28 +21,6 @@
   * 귀결된 후에는 `상태가 그대로 유지`(`불변성`)되며, 몇번이고 `재사용 가능`하다.
   * (Promise의 불변성도 중요하다. 기억해두자.)
   * `덕 타이핑`으로 구현되어 있다. `then`이라는 함수만 구현되어 있으면 Promise 객체로 인식하기 때문에 주의
-* 에러/예외 처리시, `then의 두번째 매개변수`(A)보다는 `catch`가 더 권장된다. (A는 reject시에만 발생)
-* (덧붙여 말하면, `error는 연쇄를 타고 계속 넘어가기 때문에`, onReject에서도 `이전 단계의 error`는 잡을 수 있다. 그리고 error가 `catch` 까지 넘어가진 않고, 정상적인 `이룸(resolve)`는 계속 연쇄된다.)
-  ```javascript
-  function test() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  }
-
-  test()
-    .then(() => {
-      a(); // ReferenceError
-      console.log('success');
-    }, (onRejectValue) => {
-      console.error('--A.에러 캐치: ', onRejectValue); // reject가 일어난 것이 아니라 무시된다.
-    })
-    .catch((e) => {
-      console.error('--B.(catch)에러 캐치: ', e);
-    });
-  
-  // '--B.(catch)에러 캐치: ReferenceError: a is not defined.'
-  ```
 * Promise 스케쥴링
   ```javascript
   function test() {

@@ -59,29 +59,6 @@
 
     });
   ```
-<!-- 아래 내용 잘못된 듯, 확인 요망
-
-* `then의 두번째 매개변수`(A)보다는 `catch`가 더 권장된다. (A는 reject시에만 발생)
-  ```javascript
-  function test() {
-    return new Promise(resolve => {
-      resolve();
-    });
-  }
-
-  test()
-    .then(() => {
-      a(); // ReferenceError
-      console.log('success');
-    }, (onRejectValue) => {
-      console.error('--A.에러 캐치: ', onRejectValue); // reject가 일어난 것이 아니라 무시된다.
-    })
-    .catch((e) => {
-      console.error('--B.(catch)에러 캐치: ', e);
-    });
-  
-  // '--B.(catch)에러 캐치: ReferenceError: a is not defined.'
-  ``` -->
 
 <hr />
 

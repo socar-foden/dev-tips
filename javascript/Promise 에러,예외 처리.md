@@ -47,6 +47,18 @@
   // 42
   ```
 
+* 사실, `catch`는 아래와 같이 `then`에 `null`, `error-callback`을 주는 것과 같다. 그래서 연쇄 도중에 발생한 reject는 catch에서 잡히지 않는 것
+  ```javascript
+  Promise
+    .resolve()
+    .then(null, e => { // 두개가 같다.
+
+    })
+    .catch(e => { // 두개가 같다.
+
+    });
+  ```
+
 <hr />
 
 * ** (Promise의) `catch`에서 에러가 났을 경우, `try-catch의 catch`에서는 해당 에러를 다룰 수 없다. (이 경우, `예외`를 던지기 때문에 쉽게 알 수 있긴 하다.)

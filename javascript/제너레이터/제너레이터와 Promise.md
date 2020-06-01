@@ -57,3 +57,60 @@
       iter.throw(e); // 제너레이터로 ERROR를 다시 던져준다.
     });
   ```
+
+<hr />
+
+* 참고) 위 개념으로 작성된 `Promise 인식형 제너레이터`, 모든 비동기 요청이 끝날때까지 실행시켜준다.
+* `await/async`의 원형과 비슷하다. 아래와 같은 패턴을 명세로 하자는 요구가 많아 `await/async`가 채택되었다.
+  ```javascript
+  function run(gen) {
+    var args = [].slice.call(arguments, 1);
+    var iter = gen.apply(this, args);
+
+    return Promise
+      .resolve()
+      .then(function handleNext(value) {
+        var next = iter.next(value);
+
+        return (function handleResult(nextIter) {
+          if (nextIter.done) {
+            return nextIter.value;
+          } else {
+            return Promise
+              .resolve(nextIter.value)
+              .then(handleNext)
+              .catch(e => {
+                return Promise
+                  .resolve(
+                    iter.throw(e) // 제너레이터가 ERROR를 처리하도록 다시 던져준다.
+                  )
+                  .then(handleResult);
+              });
+          }
+        })(next);
+      });
+  }
+
+  function* gen() {
+    try {
+      console.log(1);
+      yield 1;
+      console.log(2);
+      yield 2;
+      console.log(3);
+      yield 3;
+      foo();
+      console.log(4);
+      yield 4;
+    } catch (e) {
+      console.error('ERROR :: ', e); // ERROR ::  ReferenceError: foo is not defined
+    }
+  }
+
+  run(gen);
+
+  // 1
+  // 2
+  // 3
+  // ERROR ::  ReferenceError: foo is not defined
+  ```

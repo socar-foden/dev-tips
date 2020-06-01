@@ -71,7 +71,7 @@
     return Promise
       .resolve()
       .then(function handleNext(value) {
-        var next = iter.next(value);
+        var next = iter.next(value); // gen의 yield로 value가 넘어간다.
 
         return (function handleResult(nextIter) {
           if (nextIter.done) {

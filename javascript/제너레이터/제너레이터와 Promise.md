@@ -34,3 +34,26 @@
       console.error('ERROR :::: ', e); // ERROR ::::  ASYNC ERROR
     });
   ```
+* 보통 `귀결 결과에 상관없이` 나머지 부분이 실행되도록 아래와 같은 식으로 처리해둔다.
+  ```javascript
+  function asyncFunc() {
+    return new Promise((resolve, reject) => {
+      resolve(1000);
+    });
+  }
+
+  function* gen() {
+    yield asyncFunc();
+  }
+
+  const iter = gen();
+  const p = iter.next().value;
+
+  p
+    .then(val => {
+      iter.next(val); // 남은 반복자를 계속 수행한다.
+    })
+    .catch(e => {
+      iter.throw(e); // 제너레이터로 ERROR를 다시 던져준다.
+    });
+  ```

@@ -33,6 +33,40 @@
   console.log(iter.next());     // { value: 6, done: false }
   console.log(iter.next());     // { value: 7, done: true }
   ```
+* 에러 역시 `안/팎에서 모두 처리가능하다.`
+  ```javascript
+  function* foo() {
+    try {
+      yield *baz();
+    } catch (e) {
+      console.error('foo 에서 잡힌 에러 ::::::::: ', e);
+    }
+    yield 'foo';
+  }
+
+  function* bar() {
+    try {
+      yield *foo();
+    } catch (e) {
+      console.error('bar 에서 잡힌 에러 ::::::::: ', e);
+    }
+    yield *baz();
+  }
+
+  function* baz() {
+    throw new Error('[[baz ERROR]]');
+  }
+
+  const iter = bar();
+
+  try {
+    iter.next(); // foo 에서 잡힌 에러 :::::::::  Error: [[baz ERROR]]
+    iter.throw('[[밖의 ERROR]]'); // bar 에서 잡힌 에러 :::::::::  [[밖의 ERROR]]
+    iter.next(); // 밖에서 잡힌 에러 :::::::::  Error: [[baz ERROR]]
+  } catch (e) {
+    console.error('밖에서 잡힌 에러 ::::::::: ', e);
+  }
+  ```
 * 제너레이터 내부에는 `비동기 관련 세부로직이 드러나지 않는 것이 좋은데`, 그럴 경우 위와같이 위임을 활용할 수 있다.
 
 <hr />

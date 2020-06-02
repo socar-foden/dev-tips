@@ -8,7 +8,7 @@
     console.log('bar -> foo :::::::::::::: ', yield 4);
     yield 5;
     console.log('=========[foo 종료]=========');
-    return -1000;
+    return -1000; // foo 호출이 다 끝난 '후' bar의 yield로 반환된다.
   }
 
   function* bar() {
@@ -29,7 +29,7 @@
                                 // bar -> foo ::::::::::::::  1000
                                 // { value: 5, done: false }
   console.log(iter.next(1000)); // =========[foo 종료]=========
-                                // foo -> bar ::::::::::::::  -100
+                                // foo -> bar ::::::::::::::  -1000
   console.log(iter.next());     // { value: 6, done: false }
   console.log(iter.next());     // { value: 7, done: true }
   ```

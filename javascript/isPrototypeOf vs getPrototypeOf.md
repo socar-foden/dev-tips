@@ -6,9 +6,9 @@
   * `같은 프로토타입 체이닝에 속해있는지 여부`를 반환해준다.
   * (직접적으로 연결되어 있지 않아도 true)  
   ```javascript
-  C.isPrototypeOf(B); // true
-  C.isPrototypeOf(A); // true: C, A 중간에 B가 존재하지만 같은 체이닝에 속해있기 때문에
-  B.isPrototypeOf(A); // true
+  B.isPrototypeOf(C); // true
+  A.isPrototypeOf(C); // true: C, A 중간에 B가 존재하지만 같은 체이닝에 속해있기 때문에
+  A.isPrototypeOf(B); // true
   ```
 * `Object.getPrototypeOf`
   * 각 Object 인스턴스에 속한 메서드

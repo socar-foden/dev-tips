@@ -37,4 +37,4 @@
     * https://medium.com/@TomasRup/avoiding-useless-redux-tests-b08089764458
 아래
   * 아래는 `reducer만 단위테스트` 하고, `통합테스트 + E2E`
-    * https://huns.me/development/1953
+    * https://rinae.dev/posts/lessons-learned-testing-react-redux-apps-with-jest-and-enzyme-kr

@@ -3,6 +3,7 @@
   * `수동으로 새로고침` 한 경우
   * `직접 URL을 치고` 들어온 경우
 * 이유는 아래와 같다. (`connect-history-api-fallback(express 미들웨어) 참조`)
+* (connect-history-api-fallback: https://github.com/bripkens/connect-history-api-fallback) 
   ```
   Single Page Applications (SPA) typically only utilise one index file that is accessible by web browsers: usually index.html. Navigation in the application is then commonly handled using JavaScript with the help of the HTML5 History API. This results in issues when the user hits the refresh button or is directly accessing a page other than the landing page, e.g. /help or /help/online as the web server bypasses the index file to locate the file at this location. As your application is a SPA, the web server will fail trying to retrieve the file and return a 404 - Not Found message to the user.
   ```

@@ -8,12 +8,12 @@
   p
     .then(value => {
       return new Promise(resolve => {
-        setTimeout(() => {
+        setTimeout(() => { // setTimeout: 비동기
           resolve(value * 2);
         }, 100);
       });
     })
     .then(value => {
-      console.log(value); // 200
+      console.log(value); // 200: 순서가 보장된다.
     });
   ```

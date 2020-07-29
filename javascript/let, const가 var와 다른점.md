@@ -1,5 +1,10 @@
 ✅ let, const가 var와 다른점
-* 연관 키워드: `스코프`, `호이스팅`, `TDZ(Temporal Dead Zone)`, `반복문`, `클로저`
+* 연관 키워드: `스코프`, `호이스팅`, `TDZ(Temporal Dead Zone)`, `반복문`, `클로저`\
+* `중복 선언`이 `불가능`하다.
+  ```javascript
+  let a;
+  let a; // SyntaxError: Identifier 'a' has already been declared
+  ```
 * `블록 레벨 스코프`를 지원한다. (`if`, `for`, `단순 블록` 등)
   ```javascript
   if (true) {

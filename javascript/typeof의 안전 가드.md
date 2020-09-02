@@ -16,3 +16,10 @@
     console.log(globalVal);
   }
   ```
+* (참고) `객체의 프로퍼티를 접근할 때`는 `참조 에러가 발생하지 않는 것`과 더불어 전역 객체에서 접근하는 방법이 있으나, 실행 환경마다 전역 객체가 다를 여지가 크므로 `권장되는 방법은 아니다.`
+  ```js
+  // 실행 환경에따라 window가 전역객체가 아닐 수 있다.
+  if (window.globalVal) { // globalVal이 없어도, ReferenceError가 발생하지 않는다.
+    console.log(window.globalVal);
+  }
+  ```

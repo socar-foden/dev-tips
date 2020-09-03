@@ -17,11 +17,12 @@
 
 * (참고) `Falsy 객체`
   * `현재는 비표준이 되었지만, 사용되고 있는 레거시 객체`를 뜻한다.
-  * ** `Boolean 타입으로 래핑시 false`로 변환된다.
+  * ** `boolean 타입으로 변환시 false`로 변환된다.
     ```js
     if (document.all) {
       console.log('exist'); // 'exist'
     }
 
     console.log(Boolean(document.all)); // false
+    console.log(!!document.all); // false
     ```

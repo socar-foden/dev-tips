@@ -23,3 +23,11 @@
     console.log(window.globalVal);
   }
   ```
+
+* ** (참고) ES6의 `let, const로 선언된 변수`는 `TDZ이 우선 적용`되어 typeof의 안전가드가 작동하지 않는다.
+  ```js
+  console.log(typeof varVal) // undefined
+
+  console.log(typeof letVal); // ReferenceError
+  let letVal = 2;
+  ```

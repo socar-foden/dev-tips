@@ -24,9 +24,11 @@
 
     function bar() {
       console.log(this.a); // undefined ----> TypeError에서 막혔지만, 애초에 여기서도 this는 글로벌 스코프를 가리킨다.
+
+      // this가 foo의 스코프를 가리키고 있다면, 1이 찍혀야 한다.
     }
 
-    foo(); // TypeError: this.bar is not a function
+    foo(); // TypeError: this.bar is not a function (실행 환경에 따라 bar가 실행되기도 한다.)
     ```
 * `new` 함수로 생성된 객체의 경우, `생성된 인스턴스`가 this
   * (명시적, `암시적` 바인딩 모두 `new`를 사용하면 `오버라이딩`된다.)

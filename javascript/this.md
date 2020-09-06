@@ -34,25 +34,44 @@
   * (명시적, `암시적` 바인딩 모두 `new`를 사용하면 `오버라이딩`된다.)
 * 호출 객체가 체이닝되어있을 경우, ** 최종적으로 `직접 호출한` 객체를 가리킨다.
   * `렉시컬 스코핑`을 잘 생각해본다.
-    ```js
-    const obj = {
-      name: 'obj',
-      getName: function () {
-        return this.name;
-      },
-    };
+    * 예시 1
+      ```js
+      const obj = {
+        name: 'obj',
+        getName: function () {
+          return this.name;
+        },
+      };
 
-    const newGetName = obj.getName;
-    console.log(newGetName()); // undefined ---> 호출한 객체가 없다.
+      const newGetName = obj.getName;
+      console.log(newGetName()); // undefined ---> 호출한 객체가 없다.
 
-    // 새로운 객체에 바인딩
-    const newObj = {
-      name: 'newObj',
-      getName: obj.getName
-    };
+      // 새로운 객체에 바인딩
+      const newObj = {
+        name: 'newObj',
+        getName: obj.getName
+      };
 
-    console.log(newObj.getName()); // 'newObj'
-    ```
+      console.log(newObj.getName()); // 'newObj'
+      ```
+    * 예시 2
+      ```js
+      function printThisValue() { console.log(this.value); }
+
+      const obj1 = {
+        value: 100,
+        printThisValue: printThisValue
+      };
+
+      const obj2 = {
+        value: 200,
+        obj1: obj1,
+        printThisValue: obj1.printThisValue // ** obj1.printThisValue라는 함수 내용을 할당한 것이지, obj1이 호출한 것은 아니다!!
+      };
+
+      obj2.obj1.printThisValue(); // 100 ---> 최종적으로 obj1이 호출했다.
+      obj2.printThisValue(); // 200 ---> 최종적으로 obj2가 호출했다.
+      ```
 * (명시적, 암시적) `바인딩`, `new`로 호출을 제외한 나머지 경우는 `전역객체`('`strict`' 모드일 경우는 `undefined`)를 가리킨다.
 
 <hr />

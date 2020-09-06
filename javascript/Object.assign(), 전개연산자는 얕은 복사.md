@@ -1,26 +1,27 @@
 ✅ `Object.assign()`, `전개연산자`는 얕은 복사
-* 우선, 둘 다 `ES6` 문법
-  ```javascript
+
+* 둘 다 `ES6`
+  ```js
   const inner = {
-      name: 'inner-name'
+    name: 'inner-name'
   };
 
   const objA = {
-      type: 'parent',
-      inner
+    type: 'parent',
+    inner
   };
   const objB = {
-      ...objA
+    ...objA
   };
   objA.inner === objB.inner // true
   ```
-  ```javascript
+  ```js
   const objC = Object.assign({}, inner);
   objA.inner === objC.inner // true
   ```
 
-> Object.assign(), 전개연산자는 =로 `'참조'`한 것과 다른 것이지.. `절대 깊은 복사가 아니다.`
-  ```javascript
+* ** Object.assign(), 전개연산자는 =로 `'참조'`한 것과 다른 것이지.. `절대 깊은 복사가 아니다.`
+  ```js
   const a = {};
   const b = a;
   // a와 b는 자체가 같다.(참조가 같다.)

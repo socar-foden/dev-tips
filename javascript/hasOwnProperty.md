@@ -11,3 +11,4 @@
   u1.hasOwnProperty('name'); // true
   u1.hasOwnProperty('getName'); // false
   ```
+* `함수명`에서 쉽게 유추가 가능하다.

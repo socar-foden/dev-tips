@@ -1,6 +1,7 @@
 ✅ Promise의 연쇄 흐름
 
 * `then`의 `콜백함수가 '반환한 값'`은 `어떤 값이든` 연쇄된 Promise의 `resolve(이룸)`으로 세팅된다.
+* ** 다시 말해서, `Promise 객체라면 그대로 뱉어내고`, 그게 아니라면 `값이 나올때까지 then을 풀어서` '해당 값을 가진' `Promise 객체로 만들어 뱉어낸다.`
   ```js
   const start = new Promise(resolve => { resolve(1000); });
 

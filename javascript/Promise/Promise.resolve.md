@@ -33,4 +33,28 @@
       console.log(val);
     }); // 100
   ```
-* 위와 같은 사실 때문에 `Promise의 사용 여부와 관계없이`, 현재 통용되고 있는 여러 비동기 모듈들과 호환이 가능한 것이다.
+* 위와 같은 사실 때문에 `Promise의 사용 여부(반환 여부)와 관계없이`, 현재 통용되고 있는 여러 비동기 모듈들과 호환이 가능한 것이다.
+  ```js
+  // non-thenable
+  function getValue() {
+    return 10;
+  }
+  const p1 = Promise.resolve(getValue());
+  p1.then(value => { console.log(value); });  // 10
+
+  // thenable
+  function getThenable() {
+    return {
+      then: function (callback) {
+        callback(100);
+      }
+    };
+  }
+  const p2 = Promise.resolve(getThenable());
+  p2.then(value => { console.log(value); });  // 100
+
+  // Promise
+  const p = new Promise(resolve => { resolve(1000); });
+  const p3 = Promise.resolve(p);
+  p3.then(value => { console.log(value); });  // 1000
+  ```

@@ -36,17 +36,24 @@
 * ** 더 중요한 것은, `연쇄된 Promise의 resolve`도, `Promise.resolve와 마찬가지로 동작하기 때문에`, `비동기성`을 부여해도 순서가 보장된다.
 * (cf. Promise.resolve: https://github.com/zxczoxc125/dev-tips/blob/master/javascript/Promise.resolve.md)
   ```js
-  const p = Promise.resolve(100);
+  const p = Promise.resolve();
 
   p
     .then(value => {
+      console.log(1);
+
       return new Promise(resolve => {
-        setTimeout(() => { // setTimeout: 비동기
-          resolve(value * 2);
-        }, 100);
-      });
+        setTimeout(() => {
+          console.log('setTimeout');
+          resolve();
+        }, 1000);
+      })
     })
     .then(value => {
-      console.log(value); // 200: 순서가 보장된다.
+      console.log(2);
     });
+  
+  // 1
+  // 'setTimeout' ----> 약 1초 후
+  // 2
   ```

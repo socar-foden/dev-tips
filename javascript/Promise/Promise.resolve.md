@@ -1,5 +1,6 @@
 ✅ Promise.resolve
-* `즉시값`, `Non-Promise`, `Non-Thenable` 값을 인자로 받아, 이 값으로 이루어진 `Promise 객체를 리턴`해 준다.
+
+* ** `즉시값`, `Non-Promise`, `Non-Thenable` 값을 인자로 받아, 이 값으로 이루어진 `Promise 객체를 리턴`해 준다.
   ```javascript
   const resolve = Promise.resolve(100);
   console.log(resolve); // Promise { 100 }

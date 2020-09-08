@@ -27,6 +27,7 @@
     }
   };
   const resolve = Promise.resolve(thenable);
+  console.log(resolve); // Promise { 100 }
 
   resolve
     .then(val => {

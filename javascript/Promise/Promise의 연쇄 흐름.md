@@ -40,8 +40,10 @@
     const p = Promise.resolve(100);
 
     // case1) 아무것도 반환되지 않음
+    // --> [A]와 [B]의 흐름이 헷갈릴 수 있다.
     start
       .then(value => {
+        // [A]
         p
           .then(value => {
             console.log(value); // 100
@@ -49,6 +51,7 @@
 
         // 아무 값도 리턴하지 않는다.
       })
+      // [B]
       .then(value => {
         console.log(value); // undefined
       });

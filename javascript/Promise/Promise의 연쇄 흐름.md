@@ -43,13 +43,15 @@
     .then(value => {
       console.log(1);
 
+      // [A]
       return new Promise(resolve => {
         setTimeout(() => {
           console.log('setTimeout');
           resolve();
         }, 1000);
-      })
+      });
     })
+    // ** 여기서 then은 무조건 Promise 객체([A])가 resolve 되어야 실행된다!!
     .then(value => {
       console.log(2);
     });

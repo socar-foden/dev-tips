@@ -1,4 +1,5 @@
-✅ Promise 에러,예외 처리
+✅ Promise 에러, 예외 처리
+
 * ** `자신의 연쇄`에서는 `reject`를 잡을 수 없다.
   ```javascript
   const p = Promise.resolve(100);
@@ -22,7 +23,32 @@
       .then(sf)
       .catch(ef);
     ```
-* `error는 연쇄를 타고 계속 넘어가기 때문에`, onReject에서도 `(모든) 이전 단계의 error`는 잡을 수 있다. 그리고 error가 `catch` 까지 넘어가진 않지만, 정상적인 `이룸(resolve)`는 계속 연쇄된다.
+* `error는 연쇄를 타고 계속 넘어가기 때문에`, onReject에서도 `(모든) 이전 단계의 error`는 잡을 수 있다.
+  * `버림 처리기가 생략`되면(or 함수가 아닐 시) 아래와 같은 버림 처리기가 있다고 `가정하기 때문`
+    ```js
+    const onrejected = reason => {
+      throw reason;
+    };
+    ```
+  * 실제로 확인해 보면
+    ```js
+    const p = Promise.reject('reject reason!!!');
+
+    p
+      .then(value => {
+          console.log(value, 1);  // ---> 실행되지 않는다.
+        }, reason => {
+          console.log(reason, 1); // reject reason!!! 1
+          throw reason;
+        })
+      .then(value => {
+          console.log(value, 2);  // ---> 실행되지 않는다.
+        }, reason => {
+          console.log(reason, 2); // reject reason!!! 2
+          throw reason;
+        });
+    ```
+* 그리고 error가 `catch` 까지 넘어가진 않지만, 정상적인 `이룸(resolve)`는 계속 연쇄된다.
   ```javascript
   const p = Promise.resolve();
 

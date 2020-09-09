@@ -14,7 +14,7 @@
 
   // UnhandledPromiseRejectionWarning: ReferenceError: a is not defined
   ```
-  * 따라서 아래 두 코드는 `동일한 것이 아니다!`
+  * ** 따라서 아래 두 코드는 `동일한 것이 아니다!`
     ```javascript
     p1
       .then(sf, ef);
@@ -24,11 +24,16 @@
       .catch(ef);
     ```
 * `error는 연쇄를 타고 계속 넘어가기 때문에`, onReject에서도 `(모든) 이전 단계의 error`는 잡을 수 있다.
-  * `버림 처리기가 생략`되면(or 함수가 아닐 시) 아래와 같은 버림 처리기가 있다고 `가정하기 때문`
+  * `버림(reject) 처리기가 생략`되면(or 함수가 아닐 시) 아래와 같은 버림(reject) 처리기가 있다고 `가정하기 때문`
+  * * (참고) `이룸(resolve) 처리기`도 마찬가지
     ```js
+    // 기본 버림(reject) 처리기
     const onrejected = reason => {
       throw reason;
     };
+
+    // 기본 이룸(resolve) 처리기
+    const onfulfilled = value => value;
     ```
   * 실제로 확인해 보면
     ```js
@@ -47,7 +52,7 @@
           console.log(reason, 2); // reject reason!!! 2
           throw reason;
         });
-    ```
+    ``` 
 * 그리고 error가 `catch` 까지 넘어가진 않지만, 정상적인 `이룸(resolve)`는 계속 연쇄된다.
   ```javascript
   const p = Promise.resolve();

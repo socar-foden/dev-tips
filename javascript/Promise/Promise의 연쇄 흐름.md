@@ -34,6 +34,37 @@
         console.log(value); // 1000
       });
     ```
+  * 위 내용을 잘 이해하면, 아래와 같은 흐름이 헷갈리지 않는다.
+    ```js
+    const start = new Promise(resolve => { resolve(); });
+    const p = Promise.resolve(100);
+
+    // case1) 아무것도 반환되지 않음
+    start
+      .then(value => {
+        p
+          .then(value => {
+            console.log(value); // 100
+          });
+
+        // 아무 값도 리턴하지 않는다.
+      })
+      .then(value => {
+        console.log(value); // undefined
+      });
+
+    // case2) pending 상태의 Promise를 반환
+    start
+      .then(value => {
+        return new Promise(resolve => {
+          // resolve가 이뤄지지 않는다.
+        });
+      })
+      // pending 상태 ---> 실행되지 않음
+      .then(value => {
+        console.log(value); 
+      });
+    ```
 * ** 더 중요한 것은, `연쇄된 Promise의 resolve`도, `Promise.resolve와 마찬가지로 동작하기 때문에`, `비동기성`을 부여해도 순서가 보장된다.
 * (cf. Promise.resolve: https://github.com/zxczoxc125/dev-tips/blob/master/javascript/Promise.resolve.md)
   ```js

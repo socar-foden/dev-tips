@@ -1,4 +1,4 @@
-✅ 모듈화 표준을 위한 CommonJS, AMD
+✅ 모듈화 표준을 위한 CommonJS, AMD 그리고 ES6
 
 * ** Javascript에서는 다른 언어와는 다르게 `모듈 사용의 표준이 존재하지 않는다.` (ES 5 기준)
 * 서버 사이드에서의 Javascript가 떠오르면서, `표준화된 모듈 방식`에 대한 정의가 화두가 됨.
@@ -50,3 +50,42 @@
     ```
 
 2. `AMD(Asynchronous Module Definition)`
+  * ** `비동기 상황`에서도 Javascript 모듈을 쓰기 위함.
+    * ** 따라서 `브라우저`에서의 사용과 연관이 깊다.
+  * CommonJS에서 독립한 그룹
+  * 대표적으로 `RequireJS`가 AMD의 명세를 충실히 구현했다.
+
+<hr />
+
+3. ES6 모듈
+  * ** `비동기 방식`으로 로드한다.
+  * babel과 같은 트랜스파일러를 사용가능한 환경이라면 권장된다.
+  * 브라우저에서도 아래와 같은 형태로 지원한다.
+    * ** `type="module"`의 특성상 `SOP (Same Origin Policy - 동일 출처 정책)`에 위배되기 때문에, 아래 코드는 간단히 서버를 띄운 후 확인할 수 있다.
+      * `index.html`
+        ```html
+        <head>
+          <title>module_test</title>
+          <script type="module" src="./module_a.mjs"></script>
+          <script type="module" src="./module_b.mjs"></script>
+        </head>
+        <body>
+        </body>
+        ```
+      * `module_a.mjs`
+        ```js
+        var only_a = 100; // 정상적으로 동작한다면, module_b에서는 접근할 수 없을 것이다.
+
+        export default {
+          sum: function (a, b) {
+            return a + b;
+          }
+        }
+        ```
+      * `module_b.mjs`
+        ```js
+        import module_a from "./module_a.mjs";
+
+        console.log(module_a.sum(1, 2)); // 3
+        console.log(only_a); // Uncaught ReferenceError: only_a is not defined
+        ```

@@ -1,6 +1,7 @@
 ✅ Promise.race
+
 * 매개변수로 들어오는 Promise중 `가장 먼저 응답`(`성공/실패 모두`)하는 Promise에 반응한다.
-  ```javascript
+  ```js
   function test() {
     return new Promise((resolve) => {
       setTimeout(() => {

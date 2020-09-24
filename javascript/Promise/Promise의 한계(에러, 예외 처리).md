@@ -30,7 +30,7 @@
         });
       ```
   2. `catch`에서의 에러, 예외 발생
-    1. catch는 `자신의 에러`를 잡지 못한다.
+    * catch는 `자신의 에러`를 잡지 못한다.
       ```js
       const p = new Promise(resolve => { resolve(100); });
 
@@ -45,7 +45,7 @@
       
       // 조용히 묻힌다.
       ```
-    2. 외부의 try... catch에서도 잡지 못한다.
+    * 외부의 try... catch에서도 잡지 못한다.
       ```js
       const p = new Promise(resolve => { resolve(100); });
 

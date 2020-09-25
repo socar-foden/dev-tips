@@ -1,4 +1,5 @@
 ✅ 제너레이터와 Promise
+
 * ** 생성된 `이터레이터`는 Promise의 `귀결`(이룸(`resolve`), 버림(`reject`))을 기다리고, `각 결과에 따라 재개를 하거나, ERROR를 던진다.`
   ```javascript
   function asyncFunc(isReolve) {

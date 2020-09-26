@@ -28,7 +28,8 @@
 
 * 아래는 `Promise 인식형 제너레이터`, `모든 비동기 요청이 끝날때까지` 실행시켜준다.
 * `await/async`의 원형과 비슷하다. 아래와 같은 패턴을 명세로 하자는 요구가 많아 `await/async`가 채택되었다.
-*`yield`, `await` 키워드 뒤의 Promise결과 값이 좌측 변수에 할당되는 것은, 아래와 같은 패턴이 적용되기 때문이지, `키워드 자체의 기능은 아니다.`
+  * ** `1. 제너레이터` + `2. Promise` + `3. 끝까지 실행`
+* `yield`, `await` 키워드 뒤의 Promise결과 값이 좌측 변수에 할당되는 것은, 아래와 같은 패턴이 적용되기 때문이지, `키워드 자체의 기능은 아니다.`
   ```javascript
   function run(gen) {
     var args = [].slice.call(arguments, 1);

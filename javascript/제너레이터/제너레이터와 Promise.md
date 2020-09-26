@@ -1,5 +1,33 @@
 ✅ 제너레이터와 Promise
 
+* ** 핵심은 `Promise를 yield`한 다음, `이 Promise로` 제너레이터의 `이터레이터를 제어`하는 것
+  ```js
+  function* gen() {
+    try {
+      yield apiCall(); // Promise를 yield
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function apiCall() {
+    return Axios.get('http://ip.jsontest.com/');
+  }
+
+  const iter = gen();
+  const p = iter.next().value;
+
+  p // yield로 반환된 Promise
+    .then(res => {
+      iter.next(res); // 제너레이터의 이터레이터를 제어
+    })
+    .catch(err => {
+      iter.throw(err); // 제너레이터의 이터레이터를 제어
+    });
+  ```
+
+<hr />
+
 * ** 생성된 `이터레이터`는 Promise의 `귀결`(이룸(`resolve`), 버림(`reject`))을 기다리고, `각 결과에 따라 재개를 하거나, ERROR를 던진다.`
   ```javascript
   function asyncFunc(isReolve) {

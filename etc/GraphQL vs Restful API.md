@@ -1,4 +1,5 @@
 ✅ GraphQL vs Restful API
+
 * ** GraphQL 탄생배경: Restful API로는 `다양한 기종에 맞는 API`들을 `일일이 구현하는 것이 힘들어서`
 * `GraphQL` 장점(+)
   * `하나의 End Point`(대부분)

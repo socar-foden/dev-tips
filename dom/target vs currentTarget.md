@@ -39,18 +39,14 @@
     const outerDiv = document.querySelector('.outer');
 
     outerDiv.addEventListener('click', e => {
-      console.log('e.target 클래스 ::: ', e.target.getAttribute('class'));
-      console.log('e.currentTarget 클래스 ::: ', e.currentTarget.getAttribute('class'));
+      console.log('e.target 클래스 === ', e.target.getAttribute('class'));
+      console.log('e.currentTarget 클래스 === ', e.currentTarget.getAttribute('class'));
     });
     ```
-  * 결과
-    * [바깥 영역 클릭 시]
-      ```js
-      // e.target 클래스 :::  outer
-      // index.html:32 e.currentTarget 클래스 :::  outer
-      ```
-    * [안쪽 영역 클릭 시]
-      ```js
-      // e.target 클래스 :::  red-inner
-      // index.html:32 e.currentTarget 클래스 :::  outer
-      ```
+  * 각 영역 클릭 시 출력 결과
+    * `바깥 영역`
+      * `e.target` 클래스 === : outer
+      * `e.currentTarget` 클래스 === : outer
+    * `안쪽 영역`
+      * `e.target` 클래스 === : red-inner
+      * `e.currentTarget` 클래스 === : outer

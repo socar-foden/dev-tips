@@ -1,7 +1,7 @@
 ✅ target vs currentTarget
 
-* `target`: `이벤트가 발생한` 요소
-* `currentTarget`: `이벤트가 바인딩된` 요소
+* `target`: 이벤트가 `'발생한'` 요소
+* `currentTarget`: 이벤트가 `'바인딩된'` 요소
 * 아래를 보자
   ![target](/resources/target.PNG)
   * `html`

@@ -27,14 +27,14 @@
     expect(actions).toEqual([expectedPayload])
   })
   ```
-* 리덕스의 store를 테스트한다는 이유로, mock-store라는 `또 다른 새로운 모듈`을 사용하면서 테스트를 하는 이유가 뭔지 이해를 못했었다. reducer 역시 마찬가지
-* 더군다나 실제 앱이 아니라, 테스트 환경에 붙이기는 훨씬 손이 많이 가는 것 처럼 느껴졌다.
+* 리덕스의 store를 테스트한다는 이유로, mock-store라는 `또 다른 새로운 모듈`을 사용하면서 테스트를 하는지가 의문. reducer 역시 마찬가지
+* 더군다나 실제 앱이 아니라, 테스트 환경에 붙이기는 훨씬 손이 많이 가는 것 처럼 느껴짐
 
 <hr />
 
 * 아래 참고
-  * `구현한 실제 reducer, store로 통합테스트`를 해야 한다.는 링크
+  * `구현한 실제 reducer, store로 통합테스트` 하는 예
     * https://medium.com/@TomasRup/avoiding-useless-redux-tests-b08089764458
 아래
-  * `reducer만 단위테스트` 하고, `통합테스트 + E2E`를 추가로 하자.는 링크
+  * `reducer만 단위테스트` 하고, `통합테스트 + E2E`를 하는 예
     * https://rinae.dev/posts/lessons-learned-testing-react-redux-apps-with-jest-and-enzyme-kr

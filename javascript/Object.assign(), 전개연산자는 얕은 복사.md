@@ -20,7 +20,7 @@
   objA.inner === objC.inner // true
   ```
 
-* ** Object.assign(), 전개연산자는 =로 `'참조'`한 것과 다른 것이지.. `절대 깊은 복사가 아니다.`
+* ** Object.assign(), 전개연산자는 =로 `'참조'`한 것과 다른 것이지, ** `깊은 복사가 아니다.`
   ```js
   const a = {};
   const b = a;

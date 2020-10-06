@@ -1,4 +1,5 @@
 ✅ OLOO 패턴
+
 * `Objects Linked Other Objects`
 * 자바스크립트에서의 `상속`, `클래스`는 결국 흉내일 뿐이며, 이 흉내를 내기위해 너무 쓸데없고 복잡해진(`new`, .`.prototype`, `constructor`... 등, 심지어 `class`도) 상속 패턴에 반해 고안된 것
 * 결국 자바스크립트 상속 패턴에서 중요한 것은 `[[Prototype]] 상위 연쇄`기 때문에 여기에만 집중한다.

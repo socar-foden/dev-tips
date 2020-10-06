@@ -1,4 +1,5 @@
 ✅ let, const가 var와 다른점
+
 * 연관 키워드: `스코프`, `호이스팅`, `TDZ(Temporal Dead Zone)`, `반복문`, `클로저`\
 * `중복 선언`이 `불가능`하다.
   ```javascript

@@ -1,4 +1,5 @@
 ✅ await, async와 Promise.all()
+
 * await, async는 Promise를 반환하는 함수를 <b>병렬적으로 처리 할 수 없다.</b>
 * 아래와 같은 경우가 존재할 때,
 ```javascript

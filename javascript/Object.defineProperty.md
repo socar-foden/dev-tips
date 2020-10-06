@@ -1,4 +1,5 @@
 ✅ Object.defineProperty
+
 * 객체의 프로퍼티를 추가할 때, 여러가지 속성을 부여해 추가할 수 있게 해준다.
 * `writable`: 쓰기가능 여부, `enumerable`: 열거가능 여부, `configurable`: 설정가능 여부를 기본으로, 다양한 속성을 지정해 줄 수 있다.
 * `enumerable`를 false로 하면 콘솔에 출력되지도 않고, `for ~ in`문에도 순회하지 않는다.

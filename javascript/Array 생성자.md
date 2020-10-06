@@ -1,4 +1,5 @@
 ✅ Array 생성자
+
 * 매개변수로 여러개의 인자를 줄 때
   ```javascript
   const array = new Array(1, 2, 100, 3, [20, 30]);

@@ -15,6 +15,7 @@
 * 예시
   * `Subject.js`
     ```js
+    // ex) Store 객체 - Store를 바라보는 모든 View에게 통보한다.
     class Subject {
       constructor() {
         // 필요한 작업에 따라 다양항 observer가 있을 수 있다.
@@ -37,6 +38,7 @@
     ```
   * `Observer.js`
   ```js
+  // ex) View 객체
   class Observer {
     notify(data) {
       //  구체적인 작업내용

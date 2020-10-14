@@ -37,13 +37,13 @@
     }
     ```
   * `Observer.js`
-  ```js
-  // ex) View 객체
-  class Observer {
-    notify(data) {
-      //  구체적인 작업내용
+    ```js
+    // ex) View 객체
+    class Observer {
+      notify(data) {
+        //  구체적인 작업내용
+      }
     }
-  }
-  ```
+    ```
   
 * (참고) `Redux`나 기타 프론트엔드에서의 `상태관리`

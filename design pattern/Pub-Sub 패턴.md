@@ -65,9 +65,9 @@
 
         this.input = document.createElement('input');
         this.input.type = 'text';
-        this.store = store;
+        this.input.value = this.store.value;
 
-        this.pubsub.subscribe('change-value', this.render.bind(this));
+        this.pubsub.subscribe('change-value', this.reRender.bind(this));
       }
 
       reRender(data) {
@@ -86,7 +86,7 @@
     const view_1 = new View(store);
     const view_2 = new View(store);
 
-    // 아래 변화동안 view_1, view_2는 같은 value를 통보받는다.
+    // 아래 변화동안 view_1, view_2의 input의 value는 항상 동일한 값이 세팅된다.
     view_1.changeValue(1000);
     view_2.changeValue(10);
     view_1.changeValue(10000);

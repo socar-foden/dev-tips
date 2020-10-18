@@ -13,7 +13,7 @@
 * `Number.isNaN()`(ES6) 과 `isNaN()`은 다르다. ES6를 지원하지 않는 환경이라면, 그냥 자기 자신과 비교한 결과를 보는게 간단해 보인다.
   * `isNaN()`: 숫자로 형변환이 가능한가?
     * (`값이 NaN인지` 판단하는데 사용하기는 부적절하다.)
-  * `ES6 Number.isNaN()`: 값이 실제로 NaN인가?
+  * ** `ES6 Number.isNaN()`: 값이 실제로 NaN인가?
     ```javascript
     const str = 'aaa'
     /**

@@ -13,6 +13,11 @@
   // start observing
   intersectionObserver.observe(document.querySelector('.scrollerFooter'));
   ```
-
-* 스크롤 이벤트와 다르게 `디바운싱`, `쓰로틀링` 이슈를 신경쓰지 않아도 된다.
-* `offsetTop`, `getBoundingClientRect` 등 기존의 뷰포트 영역 감지 속성들은 `reflow`를 발생시키는데, IntersectionObserver API는 reflow를 발생시키지 않는다.
+* 기존 `scroll 이벤트` + `Element.getBoundingClientRect()` 방법의 문제
+  1. `단기간에 수없이 많이 호출`될 수 있다.
+  2. `동기적`으로 실행되어서 메인 스레드에 영향을 준다.
+  3. 영역을 감지하는데 필요한 `Element.getBoundingClientRect()`메서드는 `항상 Reflow를 발생시킨다.`
+* 위와는 다르게 IntersectionObserver API는,
+  * `비동기적`으로 실행되어, 1, 2번 이슈를 해결할 수 있다.
+    * `디바운싱`, `쓰로틀링` 이슈를 신경쓰지 않아도 된다.
+  * `reflow를 발생시키지 않는다.`

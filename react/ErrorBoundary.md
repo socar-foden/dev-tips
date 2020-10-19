@@ -45,8 +45,8 @@
   * App.js
     ```jsx
     import React, { Fragment } from 'react';
+    
     import ErrorBoundary from './ErrorBoundary';
-
     import Small from './Small';
 
     const App = () => {

@@ -1,4 +1,4 @@
-✅ class 컴포넌트의 문제(with HOC, functional 컴포넌트)
+✅ HOC(Higher-Order Components)
 
 * 많은 함수들이 `life cycle에 종속`될 수 밖에 없다. -> `재사용`이 힘듦
 * 위 문제를 해결하기 위해 HOC로 컴포넌트를 역할에 따라 분리

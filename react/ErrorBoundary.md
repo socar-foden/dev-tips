@@ -2,8 +2,34 @@
 
 * 특정 `일부분에 존재하는 Error`가 `앱 전체를 중단시켜서는 안된다.`
 * React16부터 이 문제를 해결하게 위해 ErrorBoundary를 개념이 도입되었다.
-* ErrorBoundary가 포착하지 못하는 Error
+* ErrorBoundary가 포착하지 `'않는'` Error
   * `이벤트 핸들러`
+    * React는 이벤트 핸들러의 에러를 해결하기 위해서 에러 경계를 필요로 하지 않는다. render 메서드 및 생명주기 메서드와 달리 ** `이벤트 핸들러`는 `렌더링 중에 발생하지 않기 때문`. 따라서 이벤트 핸들러가 에러를 던져도 React는 여전히 화면에 무엇을 표시해야 할 지 알고 있다.
+    * 이벤트 핸들러 내에서 에러를 잡아야 하는 경우에 일반 자바스크립트의 try / catch 구문을 사용.
+      ```jsx
+      class MyComponent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { error: null };
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick() {
+          try {
+            // 에러를 던질 수 있는 무언가를 해야합니다.
+          } catch (error) {
+            this.setState({ error });
+          }
+        }
+
+        render() {
+          if (this.state.error) {
+            return <h1>Caught an error.</h1>
+          }
+          return <button onClick={this.handleClick}>Click Me</button>
+        }
+      }
+      ```
   * `비동기적 코드` (예: setTimeout 혹은 requestAnimationFrame 콜백)
   * `서버 사이드 렌더링`
   * 자식에서가 아닌 `ErrorBoundary자체에서 발생하는 Error`
@@ -45,7 +71,7 @@
   * App.js
     ```jsx
     import React, { Fragment } from 'react';
-    
+
     import ErrorBoundary from './ErrorBoundary';
     import Small from './Small';
 

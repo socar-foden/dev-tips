@@ -29,7 +29,7 @@
     ...
   }
   ```
-* `let`, `const는` 블록스코프르 지원하므로 아래와 같이 해결할 수도 있다.
+* `let`, `const는` 블록스코프를 지원하므로 아래와 같이 해결할 수도 있다.
   ```javascript
   const f = function () { return 'global'; }
   function test(x) {

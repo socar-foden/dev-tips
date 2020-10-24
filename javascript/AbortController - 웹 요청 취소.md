@@ -1,9 +1,10 @@
 ✅ AbortController - 웹 요청 취소
 
 * `AbortController` 인터페이스는 `하나 이상의 웹 요청을 취소할 수 있게 해준다.`
+* (공식문서상 `실험 기술`이므로 호환성 이슈에 주의해서 사용해야 한다.)
 * 사용법
   * `AbortController() 생성자`로 인터페이스를 생성 후
-  * `AbortSignal 객체`를 참조하고 있는 `AbortController.signal`를 요청에 담아 보낸다.
+  * `AbortSignal 객체`를 참조하고 있는 ** `AbortController.signal`를 요청에 담아 보낸다.
   * 요청을 취소해야 할 경우, `AbortController.abort()`를 호출한다.
 * 호출 예제
   * 빠른 시간내에 연속으로 클릭 시 기존에 완전히 처리되지 못한 요청은 취소된다.
@@ -48,3 +49,4 @@
       ```
 
 * `XMLHttpRequest, ajax, axios`등 기타 다른 라이브러리들에서는 자체적으로 간편하게 사용할 수 있는 abort 메서드를 지원한다.
+* ** `백엔드에서의 처리가 중단되지는 않는다.` 프론트에서 (새로운 요청이 발생하여) 기존의 요청이 무의미해졌을때 사용

@@ -7,7 +7,7 @@
     * 성능 탭 `'스타일 다시 계산'` 항목
   * `Repaint`
     * Reflow(Layout) 과정이 끝난 후 <b>`재생성된 렌더 트리를 '다시 그리는' 과정`</b>
-    * ** 하지만 `Repaint(Layout)`가 일어났다고 해서, `그 전에 반드시 Reflow(Layout)가 일어났던 것은 아니다!`
+    * ** 하지만 `Repaint`가 일어났다고 해서, `그 전에 반드시 Reflow(Layout)가 일어났던 것은 아니다!`
 
 * `Reflow(Layout)`가 일어나는 상황
   * 페이지 초기 렌더링 시(최초 Layout 과정)
@@ -35,7 +35,7 @@
   3. visibilty: invisible 보다 `display: none`을 활용
       * visibilty: invisible와 다르게, `display: none`는 `렌더 트리에 포함되지 않아 Reflow(Layout) 대상이 아니다.`
       * 둘의 차이점은 `'레이아웃 공간을 차지하느냐'`이다.
-  4. `Repaint(Layout)'만' 발생하는 속성` 사용하기
+  4. `Repaint'만' 발생하는 속성` 사용하기
   5. 영향을 주는 노드 줄이기(`absolite, fixed` 사용)
       * 애니메이션이 많거나, 레이아웃 변화가 많은 요소의 경우, position을 absolute 또는 fixed로 설정해, 영향을 받는 
   6. 애니메이션 `프레임` 줄이기

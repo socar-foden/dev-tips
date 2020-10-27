@@ -7,3 +7,34 @@
 * 사용
   * `함수 팩토리`
   * 재사용 가능한 모듈적 `함수 템플릿`
+    * 
+    ```js
+    const R = require('ramda');
+
+    // 최종적으로 message 인자까지 받게되면 logger가 실행
+    const logger = (prefix, suffix, message) => {
+      const prefixes = {
+        equal: '===',
+        notEqual: '!==',
+      };
+
+      const suffixes = {
+        smile: '😊',
+        angry: '😔',
+      };
+
+      console.log(`${prefixes[prefix]} ${message} ${suffixes[suffix]}`);
+    };
+
+    const logFactory = R.curry(logger);
+
+    logFactory('equal', 'smile', '[message.]');     // === [message.] 😊
+    logFactory('notEqual', 'angry', '[message.]');  // !== [message.] 😔
+
+    const equalLog = logFactory('equal');
+    equalLog('smile', '[message.]');  // === [message.] 😊
+    equalLog('angry', '[message.]');  // === [message.] 😔
+
+    const equalSmaileLog = equalLog('smile');
+    equalSmaileLog('[message.]'); // === [message.] 😊
+    ```

@@ -57,4 +57,71 @@
 * 제너레이터를 하나의 함수로 생각하기보다는, <b>`이터러블 객체 생성자`</b>로 생각하면 이해하기 조금 더 수월
 * ** 위 과정이 [요소 하나별 -> 전 과정 : 모든 요소 반복]이라는 것을 이해하기 위해서는, 이터러블 객체에 대한 제대로 된 이해가 필요하다.
 * ** 매 단계마다, `실제로 모든 요소를 도는 것이 아니라`, ** <b>`'모든 요소를 돌 수도 있는'`</b> 객체를 계속 뒤로 던져주고,
-  * ** 최종 연산시 `하나의 요소씩` `모든 과정을 돌게하는` 게 지연 평가의 원리
+  * ** 최종 연산시 `'yield로 제어권을 계속 던져'` `하나의 요소씩` `모든 과정을 돌게하는` 게 지연 평가의 원리
+    ```js
+    // 1. 평범한 순회 함수들
+    const Normal = {
+      range(num) {
+        const res = [];
+        for (let i = 0; i < num; i++) {
+          res.push(i);
+        }
+        return res;
+      },
+      filter(predicate, arr) {
+        const res = [];
+        for (const value of arr) {
+          if (predicate(value)) { res.push(value); }
+        }
+        return res;
+      },
+      take(num, arr) {
+        const res = [];
+        let cnt = 0;
+        for (const value of arr) {
+          cnt++;
+          res.push(value);
+          if (cnt >= num) { break; }
+        }
+        return res;
+      }
+    };
+
+    // 2. Lazy 평가 함수들 --> ** 모든 함수가 제너레이터로 구성
+    const Lazy = {
+      *range(num) {
+        for (let i = 0; i < num; i++) {
+          console.log('range')
+          yield i;
+        }
+      },
+      *filter(predicate, iterable) {
+        for (const value of iterable) {
+          console.log('filter')
+
+          if (predicate(value)) { yield value; }
+        }
+      },
+      *take(num, iterable) {
+        let cnt = 0;
+
+        for (const value of iterable) {
+        console.log('take')
+          
+          cnt++;
+          yield value;
+          if (cnt >= num) { break; }
+        }
+      }
+    };
+
+    // console.time('Normal');
+    // Normal.take(3, Normal.filter(num => num % 2 === 0, Normal.range(100000)));
+    // console.timeEnd('Normal');
+    // Normal: 8.869ms
+
+    console.time('Lazy');
+    Array.from(Lazy.take(3, Lazy.filter(num => num % 2 === 0, Lazy.range(100000))));
+    console.timeEnd('Lazy');
+    // Lazy: 0.124ms
+    ```

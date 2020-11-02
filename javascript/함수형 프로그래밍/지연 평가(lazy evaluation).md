@@ -38,7 +38,7 @@
       let count = 0;
       for (let i of iter) {
           // take를 실행하여 result를 할당해도 아래 console.log는 실행되지 않는다.
-          // 최종적으로, Array.from을 실행했을때, 모든 연산이 실행된다.
+          // 최종적으로, Array.from을 실행했을때, 각 요소별로 연산이 역순으로 실행된다.
           console.log(i);
           yield i;
           count++;

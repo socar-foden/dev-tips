@@ -59,3 +59,15 @@
   // 매번 블록안에 할당된 새로운 letI를 참조하므로
   ```
 * 위 특징으로, `var`를 사용할 경우 `즉시실행함수`로 일일이 감싸주어야 하는 부분을 `let`, `const`로 간단히 해결할 수 있다. 
+
+* `let`, `const`를 전역 스코프에 사용하게 될 시, 전역객체를 수정하지 않는다.
+  ```js
+  var varVal = 1;
+  console.log(window.varVal === varVal, 'varVal' in window);  // true true
+
+  let letVal = 1;
+  console.log(window.letVal === letVal, 'letVal' in window);  // false false
+
+  const constVal = 1;
+  console.log(window.constVal === constVal, 'constVal' in window);  // false false
+  ```

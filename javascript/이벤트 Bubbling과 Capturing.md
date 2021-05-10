@@ -6,6 +6,30 @@
     * 자식 -> 부모
   * `Capturing`
     * 부모 -> 자식
+    ```html
+    <div class="c-1">
+      <div class="c-2">
+        <div class="c-3"></div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll("div").forEach((item) => {
+        item.addEventListener(
+          "click",
+          (e) => {
+            // target이 아니라 currentTarget임을 주목
+            console.log(e.currentTarget.getAttribute("class"));
+          },
+          // { capture: true }
+        );
+      });
+
+      // ---> c-3 영역 클릭시
+      // Bubbling(기본): c-3 -> c-2 -> c-1
+      // Capturing: c-3 -> c-2 -> c-3
+    </script>
+    ```
 
 * `event.stopPropagation()`
   * <b>Bubbling</b> 방식의 이벤트 전파를 막아준다.
@@ -18,39 +42,9 @@
 
 * ** 활용법
   * 엘리먼트가 `일일이 추가될 때 마다 이벤트를 등록해주지 않아도`, 상위(또는 하위)에서 `위임된 이벤트로 제어가 가능`하다.
-    * 아래와 같은 UI 있을때
-      ```html
-      <ul>
-        <li>
-          <input type="text" value="1" />
-        </li>
-        <li>
-          <input type="text" value="2" />
-        </li>
-      </ul>
-      ```
-    * `Bubbling, Capturing`을 활용하지 않았을 때
-      ```js
-      const ul = document.querySelector('ul');
-
-      const inputList = document.querySelectorAll('input');
-      inputList.forEach(input => {
-        input.addEventListener('click', (e) => {
-          alert(e.target.value);
-        });
-      });
-      // -- 이 시점에서는 ** 기존에 존재하던 2개의 input에만 이벤트가 등록된다. 
-
-      const newLi = document.createElement('li');
-      const newInput = document.createElement('input');
-      newInput.type = 'text';
-      newInput.value = 3;
-      newLi.appendChild(newInput);
-      ul.appendChild(newLi);
-      ```
-    * `Bubbling, Capturing`을 활용했을 때
-      * 상위 요소에 이벤트를 걸고, `Capturing을 통해 하위에 이벤트를 위임`한다.
-      * `위임된 이벤트` 덕분에 추가된 엘리먼트는 `별도의 이벤트 등록이 필요 없다.`
+    * `이벤트 위임 (~= Capturing)`을 활용했을 때
+      * 상위 요소에 이벤트를 걸고, `** Capturing을 통해 하위에 이벤트를 위임`한다.
+      * ** 추가된 엘리먼트는 `별도의 이벤트 등록이 필요 없다.`
         ```js
         const ul = document.querySelector('ul');
 

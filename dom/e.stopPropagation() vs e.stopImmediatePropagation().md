@@ -1,10 +1,9 @@
 ✅ e.stopPropagation() vs e.stopImmediatePropagation()
 
 - `e.stopPropagation()`
-  - `동일한` 이벤트 전파를 차단
+  - 상/하위 요소로의 이벤트 전파를 차단
 - `e.stopImmediatePropagation()`
-
-  - 같은 DOM 에 걸린 `다른 이벤트까지도` 전파를 차단
+  - 동일한 요소에 걸린 `다른 이벤트까지도` 전파를 차단
 
 - 예시
 

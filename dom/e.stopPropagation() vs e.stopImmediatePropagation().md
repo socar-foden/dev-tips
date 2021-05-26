@@ -5,7 +5,7 @@
 - `e.stopImmediatePropagation()`
   - 동일한 요소에 걸린 `다른 이벤트까지도` 전파를 차단
 
-- 예시
+- 예시 (기본 Bubbling 상태)
 
   ```html
   <div id="div_1">

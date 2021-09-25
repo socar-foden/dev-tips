@@ -41,6 +41,8 @@
       var a = 2;
 
       function bar() {
+        // var a = 2;
+        // 자신의 스코프가 뭘 말하는지는 모르겠지만, 여기에 a 식별자가 존재해도 결과는 마찬가지
         console.log(this.a); // bar의 스코프의 a는 2, 하지만 undefined 출력
       }
 
@@ -57,12 +59,13 @@
 <hr />
 
 - \*\* `화살표 함수`의 경우 `상위 스코프`의 this와 같다.
+
   - = 화살표 함수는 `렉시컬 스코프를 따른다.`
 
   ```javascript
   function test() {
     this.a = 1; // 호출부를 보면, test의 this = 전역 객체
-    
+
     return () => {
       console.log(this.a); // 여기의 this = test의 this = 전역객체
     };
@@ -72,7 +75,7 @@
 
   function test2() {
     this.a = 1; // 호출부를 보면, test2의 this = 전역 객체
-    
+
     setTimeout(() => {
       console.log(this.a); // 여기의 this = test2의 this = 전역객체
     });
@@ -86,7 +89,7 @@
   2. `new 호출`: 생성된 인스턴스
   3. `call, apply, bind`: 주어진 객체
   4. `그 외`: 전역 객체(스코프)
-    - (`strict 모드`: undefined)
+  - (`strict 모드`: undefined)
 - 실제 우선순위는 2, 3, 1, 4
 
 <hr>

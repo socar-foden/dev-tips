@@ -18,7 +18,7 @@
 
 - 가장 흔한 오해
 
-  - this는 `자기 자신을 가리키지 않는다.`
+  - this는 `자기 자신을 가리킨다.` X
 
     ```js
     function test() {
@@ -34,7 +34,7 @@
     console.log(test.count); // 0
     ```
 
-  - this는 `자신의 스코프를 가리키지 않는다.`
+  - this는 `자신의 스코프를 가리킨다.` X
 
     ```js
     function foo() {

@@ -58,31 +58,33 @@
 
 <hr />
 
-- \*\* `화살표 함수`의 경우 `상위 스코프`의 this와 같다.
+- this는 호출될 때 결정되기 때문에, `콜백함수`로 쓰이는 경우 추적이 어려운 경우가 많다.
 
-  - = 화살표 함수는 `렉시컬 스코프를 따른다.`
+  - \*\* `화살표 함수`의 경우 `상위 스코프`의 this와 같다.
 
-  ```javascript
-  function test() {
-    this.a = 1; // 호출부를 보면, test의 this = 전역 객체
+    - = 화살표 함수는 `렉시컬 스코프를 따른다.`
 
-    return () => {
-      console.log(this.a); // 여기의 this = test의 this = 전역객체
-    };
-  }
+    ```javascript
+    function test() {
+      this.a = 1; // 호출부를 보면, test의 this = 전역 객체
 
-  test()(); // 1
+      return () => {
+        console.log(this.a); // 여기의 this = test의 this = 전역객체
+      };
+    }
 
-  function test2() {
-    this.a = 1; // 호출부를 보면, test2의 this = 전역 객체
+    test()(); // 1
 
-    setTimeout(() => {
-      console.log(this.a); // 여기의 this = test2의 this = 전역객체
-    });
-  }
+    function test2() {
+      this.a = 1; // 호출부를 보면, test2의 this = 전역 객체
 
-  test2(); // 1
-  ```
+      setTimeout(() => {
+        console.log(this.a); // 여기의 this = test2의 this = 전역객체
+      });
+    }
+
+    test2(); // 1
+    ```
 
 - 정리하면 아래와 같다.
   1. \*\* `일반적`: 최종적으로 호출한 객체

@@ -1,4 +1,4 @@
-✅ 상속
+✅ ES6 클래스 상속
 
 - \*\* <b>[[Prototype]], .prototype, .\_proto\_\_</b>의 차이
 

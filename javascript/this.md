@@ -22,9 +22,6 @@
 
     ```js
     function foo() {
-      // 자신의 스코프가 뭘 말하는지는 모르겠지만, 여기에 a 식별자가 존재해도 결과는 마찬가지
-      // var a = 2;
-
       function bar() {
         var a = 2;
         console.log(this.a); // bar의 스코프의 a는 2, 하지만 undefined 출력

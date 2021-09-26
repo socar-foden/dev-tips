@@ -15,8 +15,6 @@
     const B = Object.create(A);
     const C = Object.create(B);
 
-    const c = Object.create(C); // 인스턴스 생성
-
     console.log(B.isPrototypeOf(C)); // true
     console.log(A.isPrototypeOf(C)); // true: C, A 중간에 B가 존재하지만 같은 체이닝에 속해있기 때문에
     console.log(A.isPrototypeOf(B)); // true

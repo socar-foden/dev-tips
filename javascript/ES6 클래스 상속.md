@@ -54,12 +54,13 @@
 
   const c = new Child('Brandon', 15);
 
-  console.log(Object.getPrototypeOf(c) === Child.prototype); // c --> Child.prototype
-  console.log(Object.getPrototypeOf(Child.prototype) === Parent.prototype); // Child.prototype --> Parent.prototype
+  console.log(Object.getPrototypeOf(c) === Child.prototype); // true: c --> Child.prototype
+  console.log(Object.getPrototypeOf(Child.prototype) === Parent.prototype); // true: Child.prototype --> Parent.prototype
   // c --> Child.prototype --> Parent.prototype 와 같은  [[Prototype]] 연쇄를 가짐
 
   // 따라서 아래와 같은 호출이 가능
-  console.log(c.getName()); // Brandon
+  console.log(c.hasOwnProperty('getName')); // false c에는 getName이 없지만
+  console.log(c.getName()); // Brandon 호출 가능
   ```
 
   - 자바스크립트에서의 상속

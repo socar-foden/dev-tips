@@ -7,40 +7,39 @@
   - 명시적으로 `자식의 this를 바인딩`
 
     ```javascript
-    const Animal = function (name) {
+    const Parent = function (name) {
       this.name = name;
     };
-    Animal.prototype.animalFunc = function () {
-      console.log('animalFunc');
+    Parent.prototype.getName = function () {
+      return this.name;
     };
 
-    const SmallAnimal = function (name) {
-      Animal.call(this, name); // 부모 생성자 함수를 호출해 준다. (단순히 함수 자체의 역할을 수행한다. 생성자 개념 X)
-      this.size = 10;
+    const Child = function (name, age) {
+      Parent.call(this, name); // 부모 생성자 함수를 호출해 준다. (단순히 함수 자체의 역할을 수행한다. 생성자 개념 X)
+      this.age = age;
     };
-    // SmallAnimal의 prototype의 [[Prototype]]이 Animal.prototype을 가리키도록
-    SmallAnimal.prototype = Object.create(Animal.prototype);
+    // Child의 prototype의 [[Prototype]]이 Parent.prototype을 가리키도록
+    Child.prototype = Object.create(Parent.prototype);
     // 생성자 함수는 부모와 달라야 하니 자식걸로 교체
-    SmallAnimal.prototype.constructor = SmallAnimal;
+    Child.prototype.constructor = Child;
 
-    SmallAnimal.prototype.smallAnimalFunc = function () {
-      console.log('smallAnimalFunc');
+    Child.prototype.getAge = function () {
+      return this.age;
     };
 
-    const cat = new SmallAnimal('cat');
+    const c = new Child('Brandon', 10);
     ```
 
     > 결과를 보면
 
     ```javascript
-    console.log(cat instanceof Animal); // true
-    console.log(cat instanceof SmallAnimal); // true
+    console.log(c instanceof Parent); // true
+    console.log(c instanceof Child); // true
 
-    console.log(Animal.prototype); // {animalFunc: , constructor: }
-    console.log(SmallAnimal.prototype); // {smallAnimalFunc: , constructor: }
+    console.log(Parent.prototype); // {getName: , constructor: }
+    console.log(Child.prototype); // {getAge: , constructor: }
 
-    cat.animalFunc(); // animalFunc 함수를 사용가능하다.
-    cat.smallAnimalFunc();
+    c.getName(); // Brandon --> getAge 함수를 사용할 수 있다.
     ```
 
 - 객체(좌) `instanceof` 함수(우)

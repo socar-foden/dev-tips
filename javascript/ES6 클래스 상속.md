@@ -10,23 +10,15 @@
 - 상속은 기본적으로 `'복사'`를 수반하지만(???), 자바스크립트에서의 상속은 다른 객체에 링크를 걸어 동작을 상위로 `'위임'`하는 것
 
   ```javascript
-  const Foo = function (name, age) {
-    this.name = name;
-    this.age = age;
-  };
-  Foo.prototype.getName = function () {
-    return name;
-  };
+  class Foo {}
+  const a = new Foo();
 
-  const a = new Foo('jason', 15);
+  console.log(Object.getPrototypeOf(a)); // 표준, Foo.prototype
+  console.log(a.__proto__); // 비표준, Foo.prototype
 
-  Foo.prototype; // Foo.prototype
-  Object.getPrototypeOf(u); // 표준, Foo.prototype
-  a.__proto__; // 비표준, Foo.prototype
-
-  Foo.prototype === Object.getPrototypeOf(u); // true
-  Object.getPrototypeOf(u) === u.__proto__; // true
-  a.__proto__ === Foo.prototype; // 비표준, true
+  console.log(Foo.prototype === Object.getPrototypeOf(a)); // true
+  console.log(Object.getPrototypeOf(a) === a.__proto__); // true
+  console.log(a.__proto__ === Foo.prototype); // 비표준, true
   ```
 
   ![extends](/resources/extends.png)

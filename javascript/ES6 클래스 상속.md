@@ -23,6 +23,7 @@
     console.log(a.__proto__ === Foo.prototype); // true
     ```
 
+  - 클래스는 아래의 문법적인 설탕
     ![extends](/resources/extends.png)
 
 <hr />

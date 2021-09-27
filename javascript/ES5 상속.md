@@ -1,6 +1,6 @@
 ✅ ES5 상속
 
-- 부모, 자식의 `.prototype 객체간 [[Prototype]] 링크를 수동으로 연결`해 줌
+- `부모.prototype`을 `자식.prototype`의 [[Prototype]] 링크에 수동으로 연결해 줌
   - `자식.prototype`의 생성자 함수는 달라야 하니 자식걸로 교체해 줌
 - super() 역할을 하도록, 자식 객체 내에서 `부모 생성자 함수를 명시적 바인딩으로 호출`
 

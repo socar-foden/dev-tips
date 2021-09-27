@@ -43,9 +43,9 @@
     cat.smallAnimalFunc();
     ```
 
-- `instanceof`
+- 객체(좌) `instanceof` 함수(우)
 
-  - `생성자 함수(우)`의 `.prototype`이 `객체(좌)`의 [[Prototype]] 체인에 포함되는지를 판단한다.
+  - `함수(우)`의 `.prototype`이 `객체(좌)`의 [[Prototype]] 체인에 포함되는지를 판단한다.
 
     - 키워드 자체에서 느낄 수 있는 의미와는 조금 다르다.
 
@@ -61,5 +61,5 @@
       // 이상해보여도,
 
       // 객체(좌)의 [[Prototype]] 연쇄에
-      // 생성자 함수(우)의 .prototype 객체에 포함되어있다면 true를 반환
+      // 함수(우)의 .prototype 객체에 포함되어있다면 true를 반환
       ```

@@ -28,6 +28,7 @@
     };
 
     const cat = new SmallAnimal('cat');
+    cat.animalFunc(); // animalFunc
     ```
 
     > 결과를 보면

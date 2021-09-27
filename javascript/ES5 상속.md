@@ -58,8 +58,6 @@
       console.log(Child instanceof Parent); // true
       console.log(Baby instanceof Parent); // true
 
-      // 이상해보여도,
-
       // 객체(좌)의 [[Prototype]] 연쇄에
       // 함수(우)의 .prototype 객체에 포함되어있다면 true를 반환
       ```

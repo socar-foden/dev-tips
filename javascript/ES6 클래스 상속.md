@@ -1,6 +1,6 @@
 ✅ ES6 클래스 상속
 
-- \*\* <b>[[Prototype]], .prototype, .\_proto\_\_</b>의 차이
+- \*\* <b>[[Prototype]], .prototype, .\_\_proto\_\_</b>의 차이
 
   - `[[Prototype]]`: 해당 객체의 프로토타입 -표준-
     - `Object.getPrototypeOf`로 접근

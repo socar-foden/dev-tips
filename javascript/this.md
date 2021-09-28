@@ -66,21 +66,21 @@
 
     - = 화살표 함수는 `렉시컬 스코프를 따른다.`
 
-    ```javascript
-    const obj = {
-      val: 100,
-      test() {  // 호출부를 보면 test의 this === obj
-        setTimeout(() => {
-          console.log(this.val); // 콜백의 this === test의 this === obj
-        });
-      },
-    };
+      ```javascript
+      const obj = {
+        val: 100,
+        test() {  // 호출부를 보면 test의 this === obj
+          setTimeout(() => {
+            console.log(this.val); // 콜백의 this === test의 this === obj
+          });
+        },
+      };
 
-    obj.test(); // 100
+      obj.test(); // 100
 
-    // 만약 콜백함수가 function 키워드로 선언되었다면, 결과는 undefined
-    // setTimeout의 콜백은 호출주체없이 호출되므로
-    ```
+      // 만약 콜백함수가 function 키워드로 선언되었다면, 결과는 undefined
+      // setTimeout의 콜백은 호출주체없이 호출되므로
+      ```
 
 <hr>
 

@@ -82,6 +82,6 @@
 
 <hr>
 
-- 노드와 브라우저에서 전역스코프에서의 전연변수 선언의 차이(var, 함수선언문)
+- 노드와 브라우저에서 전연변수 선언의 차이
   - (https://stackoverflow.com/questions/28375998/javascript-global-variables-and-properties-in-nodejs-global-properties-sometim)
   - 노드 환경에서의 변수 접근은 `동일 파일에서만 가능해야하므로`, 특정파일의 가장 바깥에서 전역변수를 선언한다고 해도, 글로벌 객체의 프로퍼티에 할당되지 않는다.

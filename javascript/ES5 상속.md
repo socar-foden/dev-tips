@@ -33,7 +33,6 @@
     > 결과를 보면
 
     ```javascript
-    console.log(c instanceof Parent); // true
     console.log(c instanceof Child); // true
 
     console.log(Parent.prototype); // {getName: , constructor: }
@@ -49,6 +48,8 @@
     - 키워드 자체에서 느낄 수 있는 의미와는 조금 다르다.
 
       ```js
+      // 위 예제 결과에서도 c instanceof Parent ---> true
+      
       const Parent = function () {};
 
       const Child = Object.create(Parent.prototype);

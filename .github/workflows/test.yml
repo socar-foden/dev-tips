@@ -1,0 +1,25 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: a
+        run: |
+          echo "11"
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: b
+        run: |
+          echo "22"
+  job3:
+    needs: [job1, job2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: c
+        run: | 
+          echo ${{ job.status }}

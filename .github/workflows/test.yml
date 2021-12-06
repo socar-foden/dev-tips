@@ -26,4 +26,4 @@ jobs:
     steps:
       - name: c
         run: | 
-          echo ${{ !contains(needs.*.result, 'failure') ? 'success' : 'failure' }}
+          echo ${{ !contains(needs.*.result, 'failure') }}

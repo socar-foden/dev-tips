@@ -26,5 +26,5 @@ jobs:
     steps:
       - name: c
         run: | 
-          echo ${{ job.job1.status }}
-          echo ${{ job.job2.status }}
+          echo ${{ needs.job1.status }}
+          echo ${{ needs.job2.status }}

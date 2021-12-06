@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: a
         run: |
-          node -v
+          node -e 'throw Error('1233');'
   job2:
     runs-on: ubuntu-latest
     steps:

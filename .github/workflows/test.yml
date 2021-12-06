@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: a
         run: |
-          echo "11"
+          node -v
   job2:
     runs-on: ubuntu-latest
     steps:

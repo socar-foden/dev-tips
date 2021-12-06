@@ -26,5 +26,4 @@ jobs:
     steps:
       - name: c
         run: | 
-          echo ${{ needs.job1.result }}
-          echo ${{ needs.job2.result }}
+          echo ${{ needs.job1.result }} || ${{ needs.job2.result }} ? 'success' : 'failure'

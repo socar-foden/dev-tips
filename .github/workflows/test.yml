@@ -18,6 +18,7 @@ jobs:
           echo "22"
   job3:
     needs: [job1, job2]
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - name: c

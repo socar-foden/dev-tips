@@ -2,28 +2,28 @@ name: test
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 
 jobs:
-  job1:
+  connect-open-vpn:
     runs-on: ubuntu-latest
     steps:
-      - name: a
-        run: |
-          node -e 'throw Error('1233');'
-  job2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: b
-        run: |
-          echo "22"
-  job3:
-    needs: [job1, job2]
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - name: c
-        run: | 
-          echo ${{ !contains(needs.*.result, 'failure') }}
+      - uses: actions/checkout@v1
+      - name: Install Open VPN
+        run: sudo apt-get install openvpn
+      - name: Connect VPN
+        uses: golfzaptw/action-connect-ovpn@master
+        id: connect_vpn
+        with:
+          PING_URL: 'https://staging.soomgo.com'
+          FILE_OVPN: '.github/vpn/config.ovpn'
+#           SECRET: ${{ secrets.SECRET_USERNAME_PASSWORD }}
+#           TLS_KEY: ${{ secrets.TLS_KEY }}
+        env:
+          CA_CRT: ${{ secrets.CA_CRT}}
+          USER_CRT: ${{ secrets.USER_CRT }}
+          USER_KEY: ${{ secrets.USER_KEY }}
+      - name: Check Connect VPN
+        run: echo ${{ steps.connect_vpn.outputs.STATUS }}
+      - name: kill vpn
+        if: always()
+        run: sudo killall openvpn

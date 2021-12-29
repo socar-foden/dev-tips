@@ -2,11 +2,15 @@ name: test
 
 on:
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      TEST_ENV:
+        required: true
 
 jobs:
   connect-open-vpn:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Install Open VPN
-        run: echo ${{ github.ref_name }}
+      - name: Test
+        run: echo ${{ secrets.TEST_ENV }}

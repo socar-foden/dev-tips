@@ -1,0 +1,11 @@
+name: Deployment to production
+
+on:
+  workflow_dispatch:
+
+jobs:  
+  e2e-staging:
+    needs: deployment-staging
+    uses: zxczoxc125/dev-tips/.github/workflows/test-reuse.yml@master
+    secrets:
+      TEST_ENV: ${{ secrets.TEST_ENV }}

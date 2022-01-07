@@ -33,6 +33,7 @@ jobs:
                 event: pass
                 custom: |
                   {
+                    "color": "green",
                     "blocks": [
                       {
                         "type": "header",
@@ -82,6 +83,7 @@ jobs:
                 event: fail
                 custom: |
                   {
+                    "color": "red",
                     "blocks": [
                       {
                         "type": "header",

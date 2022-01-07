@@ -2,6 +2,82 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+commands:
+  slack-notify-custom:
+    parameters:
+      event:
+        type: enum
+        enum: ["pass", "fail"]
+        default: "pass"
+      build_url:
+        type: string
+        default: ""
+      env:
+        type: enum
+        enum: ["prod", "staging"]
+        default: "prod"
+      color:
+        type: string
+        default: ""
+      text:
+        type: string
+        default: ""
+    steps:
+      - slack/notify:
+          channel: C02SXBMQDE2
+          custom: |
+            {
+              "attachments": [
+                {
+                  "color": "<< parameters.color >>",
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "E2E Test",
+                        "emoji": true
+                      }
+                    },
+                    {
+                      "type": "divider"
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Env:*\n- << parameters.env >>"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Result:*\n- << parameters.text >>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "divider"
+                    },
+                    {
+                      "type": "actions",
+                      "elements": [
+                        {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "emoji": true,
+                            "text": "View Workflow"
+                          },
+                          "url": "<< parameters.build_url >>"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          event: << parameters.event >>
+
 orbs: # declare what orbs we are going to use
   slack: circleci/slack@4.1
 
@@ -9,6 +85,10 @@ parameters:
   trigger-by-api:
     type: boolean
     default: true
+  env:
+    type: enum
+    enum: ["prod", "staging"]
+    default: "prod"
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -28,114 +108,130 @@ jobs:
             - run:
                 name: "Say hello"
                 command: "echo ${TEST_ENV}"
-            - slack/notify:
-                channel: C02SXBMQDE2
-                event: pass
-                custom: |
-                  {
-                    "attachments": [
-                      {
-                        "color": "#00FF00",
-                        "blocks": [
-                          {
-                            "type": "header",
-                            "text": {
-                              "type": "plain_text",
-                              "text": "E2E Test",
-                              "emoji": true
-                            }
-                          },
-                          {
-                            "type": "divider"
-                          },
-                          {
-                            "type": "section",
-                            "fields": [
-                              {
-                                "type": "mrkdwn",
-                                "text": "*Env:*\n- prod"
-                              },
-                              {
-                                "type": "mrkdwn",
-                                "text": "*Result:*\n- success ✅"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "divider"
-                          },
-                          {
-                            "type": "actions",
-                            "elements": [
-                              {
-                                "type": "button",
-                                "text": {
-                                  "type": "plain_text",
-                                  "emoji": true,
-                                  "text": "View Workflow"
-                                },
-                                "url": "${CIRCLE_BUILD_URL}"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-            - slack/notify:
-                channel: C02SXBMQDE2
-                event: fail
-                custom: |
-                  {
-                    "attachments": [
-                      {
-                        "color": "#FF0000",
-                        "blocks": [
-                          {
-                            "type": "header",
-                            "text": {
-                              "type": "plain_text",
-                              "text": "E2E Test",
-                              "emoji": true
-                            }
-                          },
-                          {
-                            "type": "divider"
-                          },
-                          {
-                            "type": "section",
-                            "fields": [
-                              {
-                                "type": "mrkdwn",
-                                "text": "*Env:*\n- prod"
-                              },
-                              {
-                                "type": "mrkdwn",
-                                "text": "*Result:*\n- fail ❌"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "divider"
-                          },
-                          {
-                            "type": "actions",
-                            "elements": [
-                              {
-                                "type": "button",
-                                "text": {
-                                  "type": "plain_text",
-                                  "emoji": true,
-                                  "text": "View Workflow"
-                                },
-                                "url": "${CIRCLE_BUILD_URL}"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
+            - slack-notify-custom:
+                  event: pass
+                  build_url: ${CIRCLE_BUILD_URL}
+                  env: << pipeline.parameters.env >>
+                  color: #00FF00
+                  text: Success ✅
+            - slack-notify-custom:
+                  event: fail
+                  build_url: ${CIRCLE_BUILD_URL}
+                  env: << pipeline.parameters.env >>
+                  color: #FF0000
+                  text: Fail ❌
+              
+
+
+
+            # - slack/notify:
+            #     channel: C02SXBMQDE2
+            #     event: pass
+            #     custom: |
+            #       {
+            #         "attachments": [
+            #           {
+            #             "color": "#00FF00",
+            #             "blocks": [
+            #               {
+            #                 "type": "header",
+            #                 "text": {
+            #                   "type": "plain_text",
+            #                   "text": "E2E Test",
+            #                   "emoji": true
+            #                 }
+            #               },
+            #               {
+            #                 "type": "divider"
+            #               },
+            #               {
+            #                 "type": "section",
+            #                 "fields": [
+            #                   {
+            #                     "type": "mrkdwn",
+            #                     "text": "*Env:*\n- prod"
+            #                   },
+            #                   {
+            #                     "type": "mrkdwn",
+            #                     "text": "*Result:*\n- success ✅"
+            #                   }
+            #                 ]
+            #               },
+            #               {
+            #                 "type": "divider"
+            #               },
+            #               {
+            #                 "type": "actions",
+            #                 "elements": [
+            #                   {
+            #                     "type": "button",
+            #                     "text": {
+            #                       "type": "plain_text",
+            #                       "emoji": true,
+            #                       "text": "View Workflow"
+            #                     },
+            #                     "url": "${CIRCLE_BUILD_URL}"
+            #                   }
+            #                 ]
+            #               }
+            #             ]
+            #           }
+            #         ]
+            #       }
+            # - slack/notify:
+            #     channel: C02SXBMQDE2
+            #     event: fail
+            #     custom: |
+            #       {
+            #         "attachments": [
+            #           {
+            #             "color": "#FF0000",
+            #             "blocks": [
+            #               {
+            #                 "type": "header",
+            #                 "text": {
+            #                   "type": "plain_text",
+            #                   "text": "E2E Test",
+            #                   "emoji": true
+            #                 }
+            #               },
+            #               {
+            #                 "type": "divider"
+            #               },
+            #               {
+            #                 "type": "section",
+            #                 "fields": [
+            #                   {
+            #                     "type": "mrkdwn",
+            #                     "text": "*Env:*\n- prod"
+            #                   },
+            #                   {
+            #                     "type": "mrkdwn",
+            #                     "text": "*Result:*\n- fail ❌"
+            #                   }
+            #                 ]
+            #               },
+            #               {
+            #                 "type": "divider"
+            #               },
+            #               {
+            #                 "type": "actions",
+            #                 "elements": [
+            #                   {
+            #                     "type": "button",
+            #                     "text": {
+            #                       "type": "plain_text",
+            #                       "emoji": true,
+            #                       "text": "View Workflow"
+            #                     },
+            #                     "url": "${CIRCLE_BUILD_URL}"
+            #                   }
+            #                 ]
+            #               }
+            #             ]
+            #           }
+            #         ]
+            #       }
   # slack:
   #   docker:
   #     - image: cimg/base:stable

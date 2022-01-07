@@ -25,12 +25,14 @@ jobs:
             - run:
                 name: "Say hello"
                 command: "echo ${TEST_ENV}"
-            - run:
-                name: "Say hello"
-                command: "echo $COMMON_TEST_ENV"
-            - run:
-                name: "Say hello"
-                command: "echo $COMMON_TEST_ENVSSS"
+  slack:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - slack/notify:
+          channel: C02SXBMQDE2
+          event: always
+          template: basic_on_hold_1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

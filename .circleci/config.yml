@@ -71,7 +71,7 @@ jobs:
                               "emoji": true,
                               "text": "View Workflow"
                             },
-                            "url": "https://app.circleci.com/pipelines/github/zxczoxc125/dev-tips/<< pipeline.number >>/workflows/<< pipeline.id >>"
+                            "url": "${CIRCLE_BUILD_URL}"
                           }
                         ]
                       }
@@ -120,7 +120,7 @@ jobs:
                               "emoji": true,
                               "text": "View Workflow"
                             },
-                            "url": "https://app.circleci.com/pipelines/github/zxczoxc125/dev-tips/<< pipeline.number >>/workflows/<< pipeline.id >>"
+                            "url": "${CIRCLE_BUILD_URL}"
                           }
                         ]
                       }

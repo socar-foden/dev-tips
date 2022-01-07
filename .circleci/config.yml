@@ -35,7 +35,52 @@ jobs:
       - slack/notify:
           channel: C02SXBMQDE2
           event: always
-          template: basic_on_hold_1
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "E2E Test",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Env:*\n- prod"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Result:*\n- success ✅"
+                    }
+                  ]
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "emoji": true,
+                        "text": "View Workflow"
+                      },
+                      "url": "https://google.com"
+                    }
+                  ]
+                }
+              ]
+            }
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

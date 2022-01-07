@@ -35,7 +35,7 @@ commands:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "E2E Test",
+                        "text": "E2E Test 🎢",
                         "emoji": true
                       }
                     },

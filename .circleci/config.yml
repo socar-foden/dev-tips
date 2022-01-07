@@ -31,7 +31,7 @@ jobs:
             - slack/notify:
                 channel: C02SXBMQDE2
                 event: pass
-                template: basic_on_hold_1
+                template: basic_success_1
             - slack/notify:
                 channel: C02SXBMQDE2
                 event: fail

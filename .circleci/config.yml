@@ -112,13 +112,13 @@ jobs:
                   event: pass
                   build_url: ${CIRCLE_BUILD_URL}
                   env: << pipeline.parameters.env >>
-                  color: #00FF00
+                  color: "#00FF00"
                   text: Success ✅
             - slack-notify-custom:
                   event: fail
                   build_url: ${CIRCLE_BUILD_URL}
                   env: << pipeline.parameters.env >>
-                  color: #FF0000
+                  color: "#FF0000"
                   text: Fail ❌
               
 

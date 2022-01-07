@@ -33,46 +33,50 @@ jobs:
                 event: pass
                 custom: |
                   {
-                    "color": "#00FF00",
-                    "blocks": [
+                    "attachments": [
                       {
-                        "type": "header",
-                        "text": {
-                          "type": "plain_text",
-                          "text": "E2E Test",
-                          "emoji": true
-                        }
-                      },
-                      {
-                        "type": "divider"
-                      },
-                      {
-                        "type": "section",
-                        "fields": [
+                        "color": "#00FF00",
+                        "blocks": [
                           {
-                            "type": "mrkdwn",
-                            "text": "*Env:*\n- prod"
-                          },
-                          {
-                            "type": "mrkdwn",
-                            "text": "*Result:*\n- success ✅"
-                          }
-                        ]
-                      },
-                      {
-                        "type": "divider"
-                      },
-                      {
-                        "type": "actions",
-                        "elements": [
-                          {
-                            "type": "button",
+                            "type": "header",
                             "text": {
                               "type": "plain_text",
-                              "emoji": true,
-                              "text": "View Workflow"
-                            },
-                            "url": "${CIRCLE_BUILD_URL}"
+                              "text": "E2E Test",
+                              "emoji": true
+                            }
+                          },
+                          {
+                            "type": "divider"
+                          },
+                          {
+                            "type": "section",
+                            "fields": [
+                              {
+                                "type": "mrkdwn",
+                                "text": "*Env:*\n- prod"
+                              },
+                              {
+                                "type": "mrkdwn",
+                                "text": "*Result:*\n- success ✅"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "divider"
+                          },
+                          {
+                            "type": "actions",
+                            "elements": [
+                              {
+                                "type": "button",
+                                "text": {
+                                  "type": "plain_text",
+                                  "emoji": true,
+                                  "text": "View Workflow"
+                                },
+                                "url": "${CIRCLE_BUILD_URL}"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -83,46 +87,50 @@ jobs:
                 event: fail
                 custom: |
                   {
-                    "color": "#FF0000",
-                    "blocks": [
+                    "attachments": [
                       {
-                        "type": "header",
-                        "text": {
-                          "type": "plain_text",
-                          "text": "E2E Test",
-                          "emoji": true
-                        }
-                      },
-                      {
-                        "type": "divider"
-                      },
-                      {
-                        "type": "section",
-                        "fields": [
+                        "color": "#FF0000",
+                        "blocks": [
                           {
-                            "type": "mrkdwn",
-                            "text": "*Env:*\n- prod"
-                          },
-                          {
-                            "type": "mrkdwn",
-                            "text": "*Result:*\n- fail ❌"
-                          }
-                        ]
-                      },
-                      {
-                        "type": "divider"
-                      },
-                      {
-                        "type": "actions",
-                        "elements": [
-                          {
-                            "type": "button",
+                            "type": "header",
                             "text": {
                               "type": "plain_text",
-                              "emoji": true,
-                              "text": "View Workflow"
-                            },
-                            "url": "${CIRCLE_BUILD_URL}"
+                              "text": "E2E Test",
+                              "emoji": true
+                            }
+                          },
+                          {
+                            "type": "divider"
+                          },
+                          {
+                            "type": "section",
+                            "fields": [
+                              {
+                                "type": "mrkdwn",
+                                "text": "*Env:*\n- prod"
+                              },
+                              {
+                                "type": "mrkdwn",
+                                "text": "*Result:*\n- fail ❌"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "divider"
+                          },
+                          {
+                            "type": "actions",
+                            "elements": [
+                              {
+                                "type": "button",
+                                "text": {
+                                  "type": "plain_text",
+                                  "emoji": true,
+                                  "text": "View Workflow"
+                                },
+                                "url": "${CIRCLE_BUILD_URL}"
+                              }
+                            ]
                           }
                         ]
                       }

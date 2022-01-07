@@ -28,59 +28,67 @@ jobs:
             - run:
                 name: "Say hello"
                 command: "echo ${TEST_ENV}"
-  slack:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - slack/notify:
-          channel: C02SXBMQDE2
-          event: always
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "E2E Test",
-                    "emoji": true
-                  }
-                },
-                {
-                  "type": "divider"
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Env:*\n- prod"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Result:*\n- success ✅"
-                    }
-                  ]
-                },
-                {
-                  "type": "divider"
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "emoji": true,
-                        "text": "View Workflow"
-                      },
-                      "url": "https://app.circleci.com/pipelines/github/zxczoxc125/dev-tips/<< pipeline.number >>/workflows/<< pipeline.id >>"
-                    }
-                  ]
-                }
-              ]
-            }
+            - slack/notify:
+                channel: C02SXBMQDE2
+                event: pass
+                template: basic_success_1
+            - slack/notify:
+                channel: C02SXBMQDE2
+                event: fail
+                template: basic_fail_1
+  # slack:
+  #   docker:
+  #     - image: cimg/base:stable
+  #   steps:
+  #     - slack/notify:
+  #         channel: C02SXBMQDE2
+  #         event: always
+  #         custom: |
+  #           {
+  #             "blocks": [
+  #               {
+  #                 "type": "header",
+  #                 "text": {
+  #                   "type": "plain_text",
+  #                   "text": "E2E Test",
+  #                   "emoji": true
+  #                 }
+  #               },
+  #               {
+  #                 "type": "divider"
+  #               },
+  #               {
+  #                 "type": "section",
+  #                 "fields": [
+  #                   {
+  #                     "type": "mrkdwn",
+  #                     "text": "*Env:*\n- prod"
+  #                   },
+  #                   {
+  #                     "type": "mrkdwn",
+  #                     "text": "*Result:*\n- success ✅"
+  #                   }
+  #                 ]
+  #               },
+  #               {
+  #                 "type": "divider"
+  #               },
+  #               {
+  #                 "type": "actions",
+  #                 "elements": [
+  #                   {
+  #                     "type": "button",
+  #                     "text": {
+  #                       "type": "plain_text",
+  #                       "emoji": true,
+  #                       "text": "View Workflow"
+  #                     },
+  #                     "url": "https://app.circleci.com/pipelines/github/zxczoxc125/dev-tips/<< pipeline.number >>/workflows/<< pipeline.id >>"
+  #                   }
+  #                 ]
+  #               }
+  #             ]
+  #           }
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -88,4 +96,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - slack
+      # - slack

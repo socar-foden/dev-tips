@@ -24,7 +24,7 @@ commands:
         default: ""
     steps:
       - slack/notify:
-          channel: C02SXBMQDE2
+          channel: ${FRONTEND_CHANNEL_ID}
           custom: |
             {
               "attachments": [

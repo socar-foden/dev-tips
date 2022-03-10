@@ -22,3 +22,10 @@ jobs:
       - name: Check tag
         run: |
           echo ${{ steps.previoustag.outputs.tag }}
+      - uses: release-drafter/release-drafter@v5
+        with:
+          tag: ${{ steps.previoustag.outputs.tag }}
+          # 깃헙 release note는 draft -> publish 과정을 거침
+          publish: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.TECH_PERSONAL_ACCESS_TOKEN }}

@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: release-drafter/release-drafter@v5
         with:
-          tag: ${GITHUB_REF#refs/tags/}
+          tag: ${{ GITHUB_REF#refs/tags/ }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}

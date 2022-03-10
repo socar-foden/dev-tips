@@ -15,6 +15,9 @@ jobs:
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
           fallback: 1.0.0
+      - name: Test
+        run: |
+          echo ${{ steps.previoustag.outputs.tag }}
       - uses: release-drafter/release-drafter@v5
         with:
           tag: ${{ steps.previoustag.outputs.tag }}

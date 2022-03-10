@@ -1,8 +1,9 @@
 name: Generate Release Note
 
 on:
-  tags:
-    - '*'
+  push:
+    tags:
+      - '*'
 
 jobs:
   generate-release-note:

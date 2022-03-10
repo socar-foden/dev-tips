@@ -29,4 +29,4 @@ jobs:
           # 깃헙 release note는 draft -> publish 과정을 거침
           publish: true
         env:
-          GITHUB_TOKEN: ${{ secrets.TECH_PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}

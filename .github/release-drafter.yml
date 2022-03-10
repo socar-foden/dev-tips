@@ -1,4 +1,3 @@
-generate_release_notes: true
 template: |
   ## What’s Changed
 

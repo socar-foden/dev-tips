@@ -1,0 +1,24 @@
+name: Generate Release Note
+
+on:
+  tags:
+    - '*'
+
+jobs:
+  generate-release-note:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@v2.2.0
+        with:
+          # github-action-get-previous-tag 액션이 올바르게 동작하기 위해서
+          fetch-depth: 0
+      - name: Get current new tag
+        id: previoustag
+        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+        with:
+          fallback: 1.0.0
+      - name: Check tag
+        run: |
+          echo ${{ steps.previoustag.outputs.tag }}

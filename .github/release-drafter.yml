@@ -1,5 +1,4 @@
-name-template: '$RESOLVED_VERSION'
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+generate_release_notes: true
 template: |
   ## What’s Changed
 

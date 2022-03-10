@@ -4,4 +4,4 @@ template: |
 
   $CHANGES
 
-  **Full Changelog**: https://github.com/$GITHUB_REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_VERSION
+  **Full Changelog**: https://github.com/zxczoxc125/dev-tips/compare/$PREVIOUS_TAG...$RESOLVED_VERSION

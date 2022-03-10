@@ -3,3 +3,5 @@ template: |
   ## What’s Changed
 
   $CHANGES
+
+  **Full Changelog**: https://github.com/$GITHUB_REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_VERSION

@@ -104,7 +104,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo ${TEST_ENV}"
+          command: "echo ${TEST_ENV}"   
       # - slack-notify-custom:
       #     event: pass
       #     build_url: ${CIRCLE_BUILD_URL}

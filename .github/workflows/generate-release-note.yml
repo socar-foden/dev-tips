@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - '*'
-
+   
 jobs:
   generate-release-note:
     runs-on: ubuntu-latest

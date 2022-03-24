@@ -30,6 +30,7 @@ jobs:
         with:
           github_token: ${{ secrets.PAT }}
           default_bump: ${{ github.event.inputs.VERSION }}
+          tag_prefix: ''
       # - name: Read .nvmrc
       #   run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       #   id: nvm

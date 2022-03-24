@@ -2,25 +2,58 @@ name: Deployment to Production
 
 on:
   workflow_dispatch:
+    inputs:
+      VERSION:
+        type: choice
+        description: Choice Version to Deploy
+        required: true
+        default: 'patch'
+        options:
+          - 'patch'
+          - 'minor'
+          - 'major'
+  # push:
+  #   branches:
+  #     - bugfix/FRONT-115-auto-tag
 
 jobs:
   deployment:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://force.soomgo.com
     steps:
-      - uses: actions/checkout@v2.2.0
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
         with:
-          fetch-depth: 0
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-        with:
-          fallback: 1.0.0
-      - name: Test
-        run: |
-          echo ${{ steps.previoustag.outputs.tag }}
-      - uses: release-drafter/release-drafter@v5
-        with:
-          tag: ${{ steps.previoustag.outputs.tag }}
-          publish: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          github_token: ${{ secrets.PAT }}
+          default_bump: ${{ github.event.inputs.VERSION }}
+      # - name: Read .nvmrc
+      #   run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      #   id: nvm
+      # - name: Setup Node.js environment
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: ${{ steps.nvm.outputs.NVMRC }}
+      # - name: Build Application
+      #   run: |
+      #     node -v
+      #     npm install
+      #     npm run build
+      #     ls -la
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-northeast-2
+      # - name: Deploy to EB
+      #   run: |
+      #     git config --global http.postBuffer 1048576000
+      #     git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git --branch v0.1.2
+      #     ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
+      #     echo 'export PATH="/home/runner/.ebcli-virtual-env/executables:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+      #     eb init ${{ secrets.APPLICATION_NAME }} -r ap-northeast-2 -p "node.js"
+      #     eb deploy ${{ secrets.BEANSTALK_ENV_NAME }} --debug -v --staged

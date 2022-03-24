@@ -105,18 +105,18 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo ${TEST_ENV}"
-      - slack-notify-custom:
-          event: pass
-          build_url: ${CIRCLE_BUILD_URL}
-          env: << pipeline.parameters.env >>
-          color: "#00FF00"
-          text: Success ✅
-      - slack-notify-custom:
-          event: fail
-          build_url: ${CIRCLE_BUILD_URL}
-          env: << pipeline.parameters.env >>
-          color: "#FF0000"
-          text: Fail ❌
+      # - slack-notify-custom:
+      #     event: pass
+      #     build_url: ${CIRCLE_BUILD_URL}
+      #     env: << pipeline.parameters.env >>
+      #     color: "#00FF00"
+      #     text: Success ✅
+      # - slack-notify-custom:
+      #     event: fail
+      #     build_url: ${CIRCLE_BUILD_URL}
+      #     env: << pipeline.parameters.env >>
+      #     color: "#FF0000"
+      #     text: Fail ❌
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

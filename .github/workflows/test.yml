@@ -19,9 +19,6 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: https://force.soomgo.com
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag

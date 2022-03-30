@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Short Sha
+        id: short
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Check outputs
+        run: echo ${{ steps.short.outputs.sha_short }}
       - name: Get Ref brach name
         run: |
           echo "${{ github.actor }}"

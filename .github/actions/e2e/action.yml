@@ -14,6 +14,7 @@ runs:
     - name: Short Sha
       id: short_sha
       run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      shell: bash
     - name: E2E Test - ${{ inputs.env }}
       run: |
         curl --request POST \
@@ -21,3 +22,4 @@ runs:
           --header 'authorization: Basic ${{ secrets.CIRCLECI_PERSONAL_KEY }}' \
           --header 'content-type: application/json' \
           --data '{"branch":"${{ steps.branch-name.outputs.ref_branch }}","parameters":{"env":"${{ inputs.env }}","trigger-by-api-call":true,"github-run-id":"${{ github.run_id }}","github-actor":"${{ github.actor }}","github-commit-hash":"${{ steps.short_sha.outputs.sha_short }}"}}'
+      shell: bash

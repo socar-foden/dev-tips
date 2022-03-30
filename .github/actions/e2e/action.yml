@@ -16,9 +16,8 @@ runs:
       run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       shell: bash
     - name: Short Sha
-      id: short_sha
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-      shell: echo ${{ steps.branch-name.outputs.ref_branch }}
+      run: echo ${{ steps.branch-name.outputs.ref_branch }}
+      shell: bash
     # - name: E2E Test - ${{ inputs.env }}
     #   run: |
     #     curl --request POST \

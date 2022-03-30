@@ -1,0 +1,23 @@
+name: Trigger CircleCI E2E
+
+inputs:
+  env:
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v2
+    - name: Get branch names
+      id: branch-name
+      uses: tj-actions/branch-names@v5.2
+    - name: Short Sha
+      id: short_sha
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+    - name: E2E Test - ${{ inputs.env }}
+      run: |
+        curl --request POST \
+          --url https://circleci.com/api/v2/project/gh/Soomgo-Frontend/soomgo-frontend/pipeline \
+          --header 'authorization: Basic ${{ secrets.CIRCLECI_PERSONAL_KEY }}' \
+          --header 'content-type: application/json' \
+          --data '{"branch":"${{ steps.branch-name.outputs.ref_branch }}","parameters":{"env":"${{ inputs.env }}","trigger-by-api-call":true,"github-run-id":"${{ github.run_id }}","github-actor":"${{ github.actor }}","github-commit-hash":"${{ steps.short_sha.outputs.sha_short }}"}}'

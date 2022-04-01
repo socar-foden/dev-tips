@@ -3,7 +3,7 @@ name: test
 on:
   workflow_dispatch:
     inputs:
-      environment:
+      env:
         type: choice
         description: Choice Environment to Deploy
         required: true
@@ -16,9 +16,9 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ inputs.environment }}
-      url: https://${{ inputs.environment }}
+      name: ${{ inputs.env }}
+      url: https://${{ inputs.env }}
     steps:
       - uses: actions/checkout@v2
-      - name: staging
-        run: echo ${{ inputs.environment }}
+      - name: test
+        run: echo ${{ inputs.env }}

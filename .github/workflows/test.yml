@@ -16,6 +16,7 @@ env:
   ENV_NAME: ${{ github.event.inputs.environment }}
 
 jobs:
+  caption: ${{ github.event.inputs.environment }}
   deployment:
     runs-on: ubuntu-latest
     environment:

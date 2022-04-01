@@ -2,17 +2,23 @@ name: test
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Choice Environment to Deploy
+        required: true
+        default: 'prod'
+        options:
+          - 'prod'
+          - 'staging'
 
 jobs:
   deployment:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: https://${{ inputs.environment }}
     steps:
       - uses: actions/checkout@v2
       - name: staging
-        uses: ./.github/actions/e2e
-        with:
-          env-name: staging
-      - name: prod
-        uses: ./.github/actions/e2e
-        with:
-          env-name: prod
+        run: echo success

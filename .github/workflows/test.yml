@@ -21,4 +21,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: staging
-        run: echo success
+        run: echo ${{ inputs.environment }}

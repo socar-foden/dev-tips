@@ -19,8 +19,8 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event.inputs.environment }}
-      url: https://${{ github.event.inputs.environment }}
+      name: ${{ env.ENV_NAME }}
+      url: https://${{ env.ENV_NAME }}
     steps:
       - uses: actions/checkout@v2
       - name: test

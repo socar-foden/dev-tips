@@ -5,8 +5,6 @@ on:
 
 jobs:
   deployment:
-    environment:
-      url: https://naver.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

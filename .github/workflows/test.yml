@@ -1,19 +1,7 @@
 name: test
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        description: Choice Environment to Deploy
-        required: true
-        default: 'prod'
-        options:
-          - 'prod'
-          - 'staging'
 
 env:
   ENV_NAME: ${{ github.event.inputs.environment }}
@@ -21,10 +9,7 @@ env:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.event.inputs.environment }}
-      url: https://${{ github.event.inputs.environment }}
     steps:
       - uses: actions/checkout@v2
       - name: test
-        run: echo ${{ env.ENV_NAME }}
+        run: node ./index.js

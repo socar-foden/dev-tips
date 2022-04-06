@@ -6,13 +6,15 @@ on:
 jobs:
   deployment:
     environment:
-      name: production
+      url: https://naver.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: test
         run: echo 1
   add-git-tag:
+    environment:
+      name: production
     runs-on: ubuntu-latest
     needs: deployment
     if: success()

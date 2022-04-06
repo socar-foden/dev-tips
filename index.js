@@ -17,7 +17,7 @@ const execute = async (command) => {
   };
 
 const test = async () => {
-    const { stdout } = await execute(`git branch -r --contains 1184cbbdeaee93994a40b3e2495a363c40821086`);
+    const { stdout } = await execute(`git branch -r --contains 5a4505a`);
     console.log(stdout)
 }
 

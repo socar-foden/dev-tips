@@ -22,4 +22,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: test
-        run: npm ${{ github.event.inputs.environment || 'staging' }}
+        run: echo ${{ github.event.inputs.environment || 'staging' }}

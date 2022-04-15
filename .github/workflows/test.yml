@@ -31,4 +31,4 @@ jobs:
           SLACK_TITLE: Force Pipeline Alert
           SLACK_USERNAME: pipeline alert service
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          MSG_MINIMAL: ref,actions url
+          MSG_MINIMAL: true

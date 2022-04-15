@@ -27,7 +27,8 @@ jobs:
           SLACK_CHANNEL: test
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: 'Post Content :rocket:'
-          SLACK_TITLE: Post Title
-          SLACK_USERNAME: rtCamp
+          SLACK_MESSAGE: 'Git tag가 정상적으로 추가되었습니다. Version: ${{ steps.tag_version.outputs.new_tag }}'
+          SLACK_TITLE: Force Pipeline Alert
+          SLACK_USERNAME: pipeline alert service
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          MSG_MINIMAL: ref,actions url

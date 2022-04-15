@@ -25,7 +25,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: test
-          SLACK_COLOR: green
+          SLACK_COLOR: success
           SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_MESSAGE: 'Git tag가 정상적으로 추가되었습니다. Version: ${{ steps.tag_version.outputs.new_tag }}'
           SLACK_TITLE: Force Pipeline Alert

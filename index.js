@@ -24,5 +24,3 @@ const test = async () => {
 };
 
 test();
-
-// asds

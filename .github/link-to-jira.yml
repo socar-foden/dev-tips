@@ -1,0 +1,17 @@
+name: Try GitHub Action
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  link-jira-issue:
+    name: Link Jira Issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Link Jira Issue
+        uses: john-d-pelingo/jira-link-issue-action@v1
+        with:
+          atlassian-domain: "https://zxczoxc125.atlassian.net"
+          board-name: "인생"
+          github-token: ${{ secrets.PAT }}

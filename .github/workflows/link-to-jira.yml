@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Link Jira Issue
-        uses: john-d-pelingo/jira-link-issue-action@v1
+        uses: john-d-pelingo/jira-link-issue-action@v1.1.2
         with:
           atlassian-domain: "https://zxczoxc125.atlassian.net"
           board-name: "인생"
